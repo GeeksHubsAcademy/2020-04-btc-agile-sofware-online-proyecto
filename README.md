@@ -29,7 +29,7 @@ Cypress.io:
 XXXXXX        ZZZZZZZZ
 ```
 
-## Línea de comandos.
+## Línea de comandos
 ```
 npm install --save-dev jest
 npm i @types/jest

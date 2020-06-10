@@ -8,10 +8,11 @@
 ## Información
 ```
 Nombre del proyecto :
+Descripción:
 Alumno:
 ```
 
-## Instalación.
+## Instalación
 ```
 Typescript    https://www.typescriptlang.org/
 Jest Runner   https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner
@@ -38,4 +39,9 @@ Installing          npm i -D ts-jest @types/jest
 Creating config     npx ts-jest config:init	
 Running tests	    npx jest
 XXXXXX        ZZZZZZZZ
+```
+
+## Notas
+```
+Ponga aquí cualquier tipo de mensaje necesario.
 ```

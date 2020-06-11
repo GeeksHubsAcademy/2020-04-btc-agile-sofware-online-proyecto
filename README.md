@@ -4,6 +4,12 @@
     <img src="https://github.com/GeeksHubsAcademy/2020-geekshubs-media/blob/master/image/logo.png" >	
 </p>
 
+## Workflow
+```
+Forkea el proyecto y trabaja en tu rama.
+Commitea de vez en cuando las'features' que vays desarrollando.
+Una vez lo creas necesario, haz un 'pull request' a la rama Master.
+```
 
 ## Información
 ```

@@ -20,25 +20,21 @@ Alumno:
 ```
 
 ## Instalación
-```
-Typescript    https://www.typescriptlang.org/
-Jest Runner   https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner
-vscode-icons  https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons
-ts-jest       https://github.com/kulshekhar/ts-jest 
+| Alias | URL |
+| :-------: | :------: |
+| Typescript|   https://www.typescriptlang.org/| 
+| Jest Runner |  https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner |
+| vscode-icons | https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons | 
+| ts-jest | https://github.com/kulshekhar/ts-jest  | 
 
-[Añade más tecnologías]
-fooo          https://booo/muuu 
-```
 
 ## Versiones
-```
-Visual Studio Code: 
-Jest:
-Cypress.io:
+| Alias | Version |
+| :-------: | :------: |
+| Visual Studio Code| 1.46   | 
+| Jest | 26.0 |
+| Cypress.io | | 
 
-[Añade más versiones]
-fooo:              v1.0.0
-```
 
 ## Línea de comandos
 ```
@@ -54,16 +50,14 @@ Running tests	    npx jest
 ```
 
 ## Patrones
-```
-Ponga aquí los ficheros que usen patrones de diseño.
-Fichero:  xxxxxx.ts      Patrón:  zzzzzzz
-```
+| Patrón | Fichero | Método
+| :-------: | :------: |:------: |
+| ... | ...  |... |
 
 ## Refactors
-```
-Ponga aquí los ficheros que usen Refactors.
-Fichero:  xxxxxx.ts       Linea: XXXXXX         Refactor:  zzzzzzz
-```
+| Refactor | Fichero | Método
+| :-------: | :------: |:------: |
+| ... | ...  |... |
 
 ## Notas
 ```

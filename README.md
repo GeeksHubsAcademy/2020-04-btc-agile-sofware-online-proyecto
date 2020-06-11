@@ -20,25 +20,21 @@ Alumno:
 ```
 
 ## Instalación
-```
-Typescript    https://www.typescriptlang.org/
-Jest Runner   https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner
-vscode-icons  https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons
-ts-jest       https://github.com/kulshekhar/ts-jest 
+| Alias | URL |
+| :-------: | :------: |
+| Typescript|   https://www.typescriptlang.org/| 
+| Jest Runner |  https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner |
+| vscode-icons | https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons | 
+| ts-jest | https://github.com/kulshekhar/ts-jest  | 
 
-[Añade más tecnologías]
-fooo          https://booo/muuu 
-```
 
 ## Versiones
-```
-Visual Studio Code: 
-Jest:
-Cypress.io:
+| Alias | Version |
+| :-------: | :------: |
+| Visual Studio Code| 1.46   | 
+| Jest | 26.0 |
+| Cypress.io | | 
 
-[Añade más versiones]
-fooo:              v1.0.0
-```
 
 ## Línea de comandos
 ```
@@ -52,11 +48,26 @@ Creating config     npx ts-jest config:init
 [Añade más comandos necesarios]
 Running tests	    npx jest
 ```
+## Principios SOLID
+| Principio | Fichero 
+| :-------: | :------: |
+| ... | ...  |
+| ... | ...  |
+| ... | ...  |
 
-## Video
-```
-Ponga aquí la url del video mostrando el proyecto.
-```
+## Patrones
+| Patrón | Fichero | Método
+| :-------: | :------: |:------: |
+| ... | ...  |... |
+| ... | ...  |... |
+| ... | ...  |... |
+
+## Refactors
+| Refactor | Fichero | Método
+| :-------: | :------: |:------: |
+| ... | ...  |... |
+| ... | ...  |... |
+| ... | ...  |... |
 
 ## Notas
 ```

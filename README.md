@@ -48,15 +48,25 @@ Creating config     npx ts-jest config:init
 [Añade más comandos necesarios]
 Running tests	    npx jest
 ```
+## Principios SOLID
+| Principio | Fichero 
+| :-------: | :------: |
+| ... | ...  |
+| ... | ...  |
+| ... | ...  |
 
 ## Patrones
 | Patrón | Fichero | Método
 | :-------: | :------: |:------: |
 | ... | ...  |... |
+| ... | ...  |... |
+| ... | ...  |... |
 
 ## Refactors
 | Refactor | Fichero | Método
 | :-------: | :------: |:------: |
+| ... | ...  |... |
+| ... | ...  |... |
 | ... | ...  |... |
 
 ## Notas

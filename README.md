@@ -10,8 +10,9 @@
 ## Workflow
 ```
 Forkea el proyecto y trabaja en tu rama.
-Commitea de vez en cuando las'features' que vays desarrollando.
+Commitea de vez en cuando las 'features' que vayas desarrollando.
 Una vez lo creas necesario, haz un 'pull request' a la rama Master.
+Avísanos por el slack del curso.
 ```
 
 ## Información

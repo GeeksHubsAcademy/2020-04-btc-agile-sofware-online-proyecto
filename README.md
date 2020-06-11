@@ -53,9 +53,16 @@ Creating config     npx ts-jest config:init
 Running tests	    npx jest
 ```
 
-## Video
+## Patrones
 ```
-Ponga aquí la url del video mostrando el proyecto.
+Ponga aquí los ficheros que usen patrones de diseño.
+Fichero:  xxxxxx.ts      Patrón:  zzzzzzz
+```
+
+## Refactors
+```
+Ponga aquí los ficheros que usen Refactors.
+Fichero:  xxxxxx.ts       Linea: XXXXXX         Refactor:  zzzzzzz
 ```
 
 ## Notas

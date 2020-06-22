@@ -1,4 +1,4 @@
-# 2020-04-btc-agile-sofware-online-proyecto
+# 2020-04-btc-agile-sw-online-proyecto
 
 <p align="center">
     <img src="https://github.com/GeeksHubsAcademy/2020-geekshubs-media/blob/master/image/githubagilesoftware.jpg" >	

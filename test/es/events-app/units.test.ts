@@ -22,7 +22,7 @@ describe('Tests unitarios', () => {
     
             const deletethis = deleteElement.element(json, 'contraseña');
             
-            expect(deletethis).toBe({"correo": "email@gmail.com","contraseña": "123456789-"})
+            expect(deletethis).not.toBe({"correo": "email@gmail.com","contraseña": "123456789-"})
     
         })
     

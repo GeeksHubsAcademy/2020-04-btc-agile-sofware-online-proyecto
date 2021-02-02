@@ -1,4 +1,5 @@
 import mongoose = require('mongoose');
+import { deleteElement } from '../Controller/MWS/deleteElement';
 
 const InvitedSchema = new mongoose.Schema({
     name: {
@@ -40,6 +41,9 @@ const InvitedSchema = new mongoose.Schema({
     }
 });
 
+InvitedSchema.methods.toJSON = (function(){
+    return deleteElement.element(this.toObject(),'eventID')
+})
 
 const Invited = mongoose.model('Invited', InvitedSchema);
 export = Invited;

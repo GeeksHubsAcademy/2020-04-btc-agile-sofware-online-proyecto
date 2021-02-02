@@ -1,4 +1,5 @@
 import mongoose = require('mongoose');
+import { deleteElement } from '../Controller/MWS/deleteElement';
 
 const EventSchema = new mongoose.Schema({
     name: {
@@ -32,7 +33,13 @@ const EventSchema = new mongoose.Schema({
     }
 });
 
+EventSchema.methods.toJSON = (function(){
+    return deleteElement.element(this.toObject(),'identifier')
+})
 
+EventSchema.pre<any>('save',async function () {
+    this.url = this.name.replace(/ /, "");
+})
 
 const Event = mongoose.model('Event', EventSchema);
 export = Event;

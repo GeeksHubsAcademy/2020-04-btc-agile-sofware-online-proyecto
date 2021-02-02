@@ -6,5 +6,8 @@ export class DataCrud implements CRUDI{
          return await param.find(object) 
     }
 
+    public async create(param:any,req:any,res:any,object:any){
+        return await param.create(object)
+    }
 
 } 

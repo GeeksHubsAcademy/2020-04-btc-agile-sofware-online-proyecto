@@ -10,4 +10,9 @@ export class DataCrud implements CRUDI{
         return await param.create(object)
     }
 
+    public async update(param:any,req:any,res:any,object){
+        return await param.findOneAndUpdate(object, req, { new: true, runValidators: true })
+    }
+
+ 
 } 

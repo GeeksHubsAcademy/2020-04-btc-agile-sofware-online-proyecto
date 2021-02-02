@@ -21,9 +21,28 @@ export class UserCrud extends ControllerCrud {
             return await res.send({ message: msg, object: createUser });
 
         } catch (error) {
-            return res.send(error,'there was a problem creating the user')
+            return ErrorCatch.errorReturn(error, res, 'There was a problem creating the user')
         }
     }
 
+    async Read(param:any,req:any,res:any,msg:string) {
+        try {
+            const user = await this.CRUD.find(param,req,res,{ email: req.query.email })
 
+            if (!user[0]) {
+                return res.status(404).end('This user does not Exist');
+            }
+
+            const token = await TokenAction.ValToken(user[0]._id, req, res)
+
+            if (token === true) {
+                return await res.send({ message: msg, object: user[0] });
+            }
+
+        } catch (error) {
+            return ErrorCatch.errorReturn(error, res, 'There was a problem getting the user')
+        }
+    }
+
+  
 }

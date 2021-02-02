@@ -2,7 +2,7 @@ import { deleteElement } from "../../../src/es/events-app/Controller/MWS/deleteE
 
 describe('Tests unitarios', () => {
 
-    describe('Test unitario de clase deleteElement, elimina un objeto de un JSON. TO BE', () => {
+    describe('Test unitario de clase deleteElement, elimina un objeto de un JSON. TO BE (ok)', () => {
         const json = {
             "correo": "email@gmail.com",
             "contraseña": "123456789-"

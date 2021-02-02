@@ -65,5 +65,23 @@ export class UserCrud extends ControllerCrud {
         }
     }
 
+    async Delete(param:any,req:any,res:any,msg:string) {
+        try {
+            const user = await this.CRUD.find(param,req,res,{ email: req.query.email })
 
+            if (!user[0]) {
+                return res.status(404).end('This user does not Exist');
+            }
+
+            const token = await TokenAction.ValToken(user[0]._id, req, res)
+
+            if (token === true) {
+                const userDelete = await  this.CRUD.delete(param,req,res,{ email: user[0].email })
+                return await res.send({ message: msg, object: userDelete });
+            }
+
+        } catch (error) {
+            return ErrorCatch.errorReturn(error, res, 'There was a problem deleting the user')
+        }
+    }
 }

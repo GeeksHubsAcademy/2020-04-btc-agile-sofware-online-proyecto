@@ -8,5 +8,8 @@ export class LoginData implements LoginI {
         return param.find(object);
     }
 
+    validation(req,pass){
+        return bcrypt.compare(req, pass);
+    }
 
 }

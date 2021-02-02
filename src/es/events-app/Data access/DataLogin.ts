@@ -12,4 +12,8 @@ export class LoginData implements LoginI {
         return bcrypt.compare(req, pass);
     }
 
+    token(userID){
+        return jwt.sign(userID, 'token');  
+    }
+
 }

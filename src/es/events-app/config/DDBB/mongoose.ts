@@ -12,6 +12,19 @@ export class MongooseCon implements mongooseI {
 
     MongoProcess() {
 
+        mongoose.connect(this._url, {
+            useNewUrlParser: true,
+            useCreateIndex: true,
+            useFindAndModify: false,
+            useUnifiedTopology: true,
+
+        })
+            .then(function () {
+                console.log(this._msg)
+            })
+            .catch((err) => {
+                console.error(err);
+            });
 
     }
 }

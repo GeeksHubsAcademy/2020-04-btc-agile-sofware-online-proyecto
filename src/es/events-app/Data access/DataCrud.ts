@@ -14,5 +14,8 @@ export class DataCrud implements CRUDI{
         return await param.findOneAndUpdate(object, req, { new: true, runValidators: true })
     }
 
+    public async delete(param:any,req,res,object){
+        return await param.findOneAndDelete(object)
+     }
  
 } 

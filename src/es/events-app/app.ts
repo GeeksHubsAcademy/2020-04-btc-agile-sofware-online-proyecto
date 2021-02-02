@@ -11,3 +11,9 @@ Body Parser
 **************************/
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+
+/**************************
+Call for the routers
+**************************/
+require('./Views/Views Router/RouterImpl')
+

@@ -2,7 +2,7 @@ import { deleteElement } from "../../../src/es/events-app/Controller/MWS/deleteE
 
 describe('Tests unitarios', () => {
 
-    describe('Test unitario de clase deleteElement, elimina un objeto de un JSON. TO BE (ok)', () => {
+    describe('Test unitario de clase deleteElement, elimina un objeto de un JSON. TO BE (ok) ', () => {
         const json = {
             "correo": "email@gmail.com",
             "contraseña": "123456789-"
@@ -13,6 +13,19 @@ describe('Tests unitarios', () => {
         expect(deletethis).toStrictEqual({"correo": "email@gmail.com"})
 
     })
+
+    describe('Test unitario de clase deleteElement, elimina un objeto de un JSON. NOT TO BE (ok)', () => {
+        const json = {
+            "correo": "email@gmail.com",
+            "contraseña": "123456789-"
+        }
+
+        const deletethis = deleteElement.element(json, 'contraseña');
+        
+        expect(deletethis).not.toBe({"correo": "email@gmail.com","contraseña": "123456789-"})
+
+    })
+
 
 
 })

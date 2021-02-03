@@ -38,7 +38,7 @@ describe('Tests unitarios', () => {
 
         test('Resta sumando dos numero. Not to be: 5+5-2=3', function () {
             let Resta = elementLeft.element((5 + 5), 2)
-            expect(Resta).toBe(3)
+            expect(Resta).not.toBe(3)
         })
 
 

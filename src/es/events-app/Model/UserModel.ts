@@ -1,4 +1,6 @@
+import bcrypt = require('bcryptjs');
 import mongoose = require('mongoose');
+import { deleteElement } from '../Controller/MWS/deleteElement';
 
 const UserSchema = new mongoose.Schema({
     name: String,
@@ -22,6 +24,14 @@ const UserSchema = new mongoose.Schema({
         enum: ['admin', 'user']
     }
 });
+
+UserSchema.pre<any>('save',async function () {
+    this.password = await bcrypt.hash(this.password, 9) 
+})
+
+UserSchema.methods.toJSON = (function(){
+    return deleteElement.element(this.toObject(),'password')
+})
 
 const User = mongoose.model('User', UserSchema);
 export = User;

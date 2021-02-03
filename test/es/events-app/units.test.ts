@@ -41,6 +41,11 @@ describe('Tests unitarios', () => {
             expect(Resta).not.toBe(3)
         })
 
+        test('Resta sumando dos numero. To be: 5+5-2=8 ', function () {
+            let Resta = elementLeft.element((5 - 5), 2)
+            expect(Resta).toBe(8)
+        })
+
 
     
     })

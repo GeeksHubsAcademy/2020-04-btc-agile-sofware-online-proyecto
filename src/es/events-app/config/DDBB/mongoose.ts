@@ -16,7 +16,7 @@ export class MongooseCon implements mongooseI {
         const url = this._url;
         const msg = this._msg
 
-        mongoose.connect(url {
+        mongoose.connect(url, {
             useNewUrlParser: true,
             useCreateIndex: true,
             useFindAndModify: false,

@@ -46,6 +46,11 @@ describe('Tests unitarios', () => {
             expect(Resta).toBe(8)
         })
 
+        test('Resta restando dos numeros negativos. To be: (-5)-(-2) = -3', function () {
+            let Resta = elementLeft.element(5, 2)
+            expect(Resta).toBe(-3)
+        })
+
 
     
     })

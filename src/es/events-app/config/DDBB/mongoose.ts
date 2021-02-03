@@ -12,7 +12,11 @@ export class MongooseCon implements mongooseI {
 
     MongoProcess() {
 
-        mongoose.connect(this._url, {
+
+        const url = this._url;
+        const msg = this._msg
+
+        mongoose.connect(url {
             useNewUrlParser: true,
             useCreateIndex: true,
             useFindAndModify: false,
@@ -20,7 +24,7 @@ export class MongooseCon implements mongooseI {
 
         })
             .then(function () {
-                console.log(this._msg)
+                console.log(msg)
             })
             .catch((err) => {
                 console.error(err);

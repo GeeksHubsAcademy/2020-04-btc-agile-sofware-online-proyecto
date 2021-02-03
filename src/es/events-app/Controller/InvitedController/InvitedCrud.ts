@@ -79,4 +79,18 @@ export class InvitedCrud extends ControllerCrud{
         }
     }
 
+    async Delete(param:any,req:any,res:any,msg:string) {
+        try {
+            const invited = await this.CRUD.delete(param,req,res,{ email: req.query.email })
+
+            if (!invited) {
+                return await res.status(404).end('This invited does not exist');
+            }
+
+            return await res.send({ message: msg, object: invited });
+
+        } catch (error) {
+            return ErrorCatch.errorReturn(error, res, 'There was a problem deleting the invitation')
+        }
+    }
 }

@@ -97,4 +97,35 @@ export class EventCrud extends ControllerCrud {
         }
     }
 
+
+    async Update(param:any,req:any,res:any,msg:any) {
+        try {
+            const event = await this.CRUD.find(param,req,res,{ url: req.query.url })
+            const findSameEvent = await this.CRUD.find(param,req,res,{ name: req.body.name })
+            const userId = TokenAction.decode(req);
+
+            if (!userId) {
+                return res.status(401).end('You are not logged in');
+            } else if (!event[0] || event[0].identifier !== userId) {
+                return res.status(404).end('This event does not exist');
+            } else if (findSameEvent && (req.body.name.toString() !== event[0].name.toString())) {
+                return res.status(409).end('A event exist with this name, event could not be updated');
+            }
+
+            const findUser = await findDatabase.find("eventsapp", "users", { _id: ObjectId(userId) })
+            const token = TokenAction.ValToken(findUser[0]._id, req, res)
+
+            if (token === true) {
+                req.body.identifier = userId;
+
+                const eventUpdated = await this.CRUD.update(param,req.body,res,{_id: event[0]._id})
+                eventUpdated.save()
+                return await res.send({ message: msg, object: eventUpdated });
+            }
+
+        } catch (error) {
+            return ErrorCatch.errorReturn(error, res, 'There was a problem updating the event')
+        }
+    }
+
 }

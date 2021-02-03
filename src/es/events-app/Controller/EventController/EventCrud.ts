@@ -128,4 +128,30 @@ export class EventCrud extends ControllerCrud {
         }
     }
 
+
+    async Delete(param:any,req:any,res:any,msg:any) {
+        try {
+            const userId = TokenAction.decode(req);
+            const event = await this.CRUD.find(param,req,res,{ url: req.query.url })
+
+            if (!userId) {
+                return res.status(401).end('You are not logged in');
+            } else if (!event[0] || event[0].identifier !== userId) {
+                return res.status(404).end('This event does not exist');
+            }
+
+            const findUser = await findDatabase.find("eventsapp", "users", { _id: ObjectId(userId) })
+            const token = TokenAction.ValToken(findUser[0]._id, req, res)
+
+            if (token === true) {
+                const eventDeleted = await this.CRUD.delete(param,req,res,{_id: event[0]._id})
+                return await res.send({ message: msg, object: eventDeleted });
+            }
+
+        } catch (error) {
+            return ErrorCatch.errorReturn(error, res, 'There was a problem deleting the event')
+        }
+    }
+
+
 }

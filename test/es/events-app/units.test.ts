@@ -56,6 +56,11 @@ describe('Tests unitarios', () => {
             expect(Resta).toBe(12)
         })
 
+        test('Resta con dos numeros positivos y restando un numero negativo. Not To be (5+5)-(-2)=12', function () {
+            let Resta = elementLeft.element((5 + 5), -2)
+            expect(Resta).toBe(8)
+        })
+
 
 
     

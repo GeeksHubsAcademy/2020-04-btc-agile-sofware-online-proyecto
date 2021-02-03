@@ -52,7 +52,7 @@ describe('Tests unitarios', () => {
         })
 
         test('Resta con dos numeros positivos y restando un numero negativo. To be (5+5)-(-2)=12', function () {
-            let Resta = elementLeft.element((5 - 5), -2)
+            let Resta = elementLeft.element((5 + 5), -2)
             expect(Resta).toBe(12)
         })
 

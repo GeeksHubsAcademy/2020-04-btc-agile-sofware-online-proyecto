@@ -43,4 +43,24 @@ export class InvitedCrud extends ControllerCrud{
             return ErrorCatch.errorReturn(error, res, 'There was a problem creating the invitation')
         }
     }
+
+    async Read(param:any,req:any,res:any,msg:string) {
+        try {
+            const invited = await this.CRUD.find(param,req,res,{ email: req.query.email })
+
+            if (!invited[0]) {
+                return res.status(404).end('You are not registered in any events');
+            }
+
+            const events = invited[0].eventID.map(function (id) {
+                return ObjectId(id)
+            });
+
+            const findEvent = await findDatabase.find("eventsapp", "events", { "_id": { "$in": events } })
+            return res.send({ message: msg, object: invited[0], events: findEvent });
+        } catch (error) {
+            return ErrorCatch.errorReturn(error, res, 'There was a problem getting the invitation')
+        }
+    }
+
 }

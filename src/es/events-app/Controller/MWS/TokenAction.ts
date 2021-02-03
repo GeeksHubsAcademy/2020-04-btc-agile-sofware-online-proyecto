@@ -13,8 +13,4 @@ export class TokenAction {
         throw 'Token does not match'
     }
 
-    static decode(req){
-        return jwt.decode(req.header('auth-token'))
-    }
-
 }

@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "nodemon ./src/es/events-app/app.ts",
+    "start": "nodemon ../Events/src/es/events-app/server.ts ",
     "start:watch": "nodemon",
     "test": "jest",
     "build": "tsc"
@@ -30,13 +30,12 @@
     "nodemon": "^2.0.6",
     "ts-jest": "^25.5.1",
     "ts-node": "^9.1.1",
-    "typescript": "^3.9.7"
-  },
-  "dependencies": {
+    "typescript": "^3.9.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.6",
     "supertest": "^6.0.1"
-  }
+  },
+  "dependencies": {}
 }

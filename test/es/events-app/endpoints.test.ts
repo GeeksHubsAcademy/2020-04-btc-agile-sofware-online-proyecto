@@ -271,7 +271,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "name": userName,
                 "lastname": userLastName
             })
-            .set({ 'auth-token': token })
+            .unset('auth-token')
             .expect(res => {
                 expect(res.status).toBe(500)
                 expect(res.body.error).toBe('jwt must be provided')

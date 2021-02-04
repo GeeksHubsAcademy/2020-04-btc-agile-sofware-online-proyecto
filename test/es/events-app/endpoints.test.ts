@@ -117,6 +117,28 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     })
 
+    it('Registro de usuario, Usuario ya existe, expected (409) ', (done) => {
+        request(app)
+            .post('/user/register')
+            .send({
+                "username": "username",
+                "email": email2,
+                "password": "1234567-",
+                "name": "Manuel",
+                "lastname": "Guerra Coello"
+            })
+            .expect(res => {
+                expect(res.status).toBe(409)
+                expect(res.text).toBe('Email already Exist')
+            })
+            .end(async (err) => {
+                if (err) return await done(err);
+                done();
+            })
+
+    })
+
+
 
 
 

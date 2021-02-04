@@ -706,6 +706,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
             const name = "manuel";
             const lastName = "Guerra Coello";
             const email = "invited@email.com"
+            const email2 = "invited2@email.com"
             const phone = "123456789";
             const birth = "29/03/1994";
             const nacionality = "Española"
@@ -859,6 +860,30 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         expect(res.text).toBe('You are already registered in this event')
                     })
                     .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado 2 en evento 1, expected (200)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Created')
+                    }).end((err) => {
                         if (err) return done(err);
                         done();
                     })

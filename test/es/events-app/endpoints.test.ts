@@ -450,7 +450,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "invitations": invitations,
                     "date": date,
                     "time": time,
-                    "addres": addres,
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })

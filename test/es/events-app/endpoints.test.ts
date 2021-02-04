@@ -991,7 +991,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Actualización de datos de invitado evento 1, expected (200)', (done) => {
                 request(app)
-                    .put('/invited/update?email=')
+                    .put('/invited/update?email='+email)
                     .send({
                         "name": name + " Alejandro",
                         "lastname": lastName,

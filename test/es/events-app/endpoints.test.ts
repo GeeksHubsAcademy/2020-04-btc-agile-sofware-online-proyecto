@@ -917,11 +917,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado 4 en evento 1, no hay invitaciones disponibles expected (409)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event2')
+                    .post('/invited/register?url=event1')
                     .send({
                         "name": name,
                         "lastname": lastName,
-                        "email": email3,
+                        "email": email4,
                         "phone": phone,
                         "birthdate": birth,
                         "nacionality": nacionality,

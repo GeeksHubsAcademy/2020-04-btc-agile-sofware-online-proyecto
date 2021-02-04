@@ -203,7 +203,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .send({
                 "username": user,
                 "email": email1,
-                "password": Pass,
+                "password": wronPass,
                 "name": userName,
                 "lastname": userLastName
             })

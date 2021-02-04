@@ -222,7 +222,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .put('/user/update?email=' + email2)
             .send({
                 "username": user,
-                "email": email1,
+                "email": email2,
                 "password": Pass,
                 "name": userName,
                 "lastname": userLastName

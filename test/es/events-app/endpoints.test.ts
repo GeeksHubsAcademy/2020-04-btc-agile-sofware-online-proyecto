@@ -589,8 +589,8 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     expect(res.status).toBe(409)
                     expect(res.text).toBe('A event exist with this name, event could not be updated')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -611,8 +611,8 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     expect(res.status).toBe(404)
                     expect(res.text).toBe('This event does not exist')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -620,13 +620,13 @@ describe('Test de endpoints, respuestas de conexión', () => {
         it('Obtener evento de usuario Loggeado, expected (200)', (done) => {
             request(app)
                 .get('/events')
-                .unset('auth-token')
+                .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)
                     expect(res.body.message).toBe('Events Founded')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })

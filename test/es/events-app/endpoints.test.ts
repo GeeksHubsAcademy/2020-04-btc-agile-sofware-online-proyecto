@@ -707,7 +707,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 request(app)
                     .post('/invited/register?url=event1')
                     .send({
-                        "name": "manuel",
                         "lastname": "Guerra Coello",
                         "email": "invited@email.com",
                         "phone": "123456789",

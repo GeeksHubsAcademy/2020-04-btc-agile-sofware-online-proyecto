@@ -508,6 +508,28 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+        it('Volver a crear evento 1, evento ya existente, expected (409)', (done) => {
+            request(app)
+                .post('/event/register')
+                .send .send({
+                    "name": eventName+1,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time,
+                    "addres": addres,
+                    "description": eventDescription
+                })
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(409)
+                    expect(res.text).toBe('This event Already Exist')
+                })
+                .end(async (err) => {
+                    if (err) return await done(err);
+                    done();
+                })
+        })
+
     })
 
 })

@@ -631,7 +631,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
-
         it('Obtener evento de usuario no Loggeado, expected (401)', (done) => {
             request(app)
                 .get('/events')
@@ -645,6 +644,22 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     done();
                 })
         })
+
+
+        it('Obtener evento 1 (único) de usuario Loggeado, expected (200)', (done) => {
+            request(app)
+                .get('/event?url=event1')
+                .unset('auth-token')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event Founded')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
 
 
     })

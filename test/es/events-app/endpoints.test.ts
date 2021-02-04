@@ -703,19 +703,30 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         describe('Test de edpoints invitaciones ', () => {
 
+            const name = "manuel";
+            const lastName = "Guerra Coello";
+            const email =  "invited@email.com"
+            const phone = "123456789";
+            const birth = "29/03/1994";
+            const nacionality = "Española"
+            const addres = "calle, nombre de calle"
+            const country = "España";
+            const city = "Madrid";
+            const zipCode = "28000"
+
             it('Registro de invitado sin nombre(500)', (done) => {
                 request(app)
                     .post('/invited/register?url=event1')
                     .send({
-                        "lastname": "Guerra Coello",
-                        "email": "invited@email.com",
-                        "phone": "123456789",
-                        "birthdate": "29/03/1994",
-                        "nacionality": "Española",
-                        "addres": "calle, nombre de calle",
-                        "country": "España",
-                        "city": "Madrid",
-                        "zipcode": "28000"
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
                     })
                     .set({ 'auth-token': token })
                     .expect(res => {

@@ -569,7 +569,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
                 .end(async (err) => {
                     if (err) return await done(err);
-                    mongoose.connection.close()
                     done();
                 })
         })

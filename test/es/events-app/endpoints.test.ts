@@ -707,6 +707,8 @@ describe('Test de endpoints, respuestas de conexión', () => {
             const lastName = "Guerra Coello";
             const email = "invited@email.com"
             const email2 = "invited2@email.com"
+            const email3 = "invited3@email.com"
+            const email4 = "invited4@email.com"
             const phone = "123456789";
             const birth = "29/03/1994";
             const nacionality = "Española"
@@ -888,10 +890,36 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Registro de invitado 3 en evento 1, expected (200)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email2,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Created')
+                    }).end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+    
     
 
         })
 
+     
 
 
 

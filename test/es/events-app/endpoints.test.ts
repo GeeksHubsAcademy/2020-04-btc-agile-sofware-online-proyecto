@@ -1013,6 +1013,32 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Actualización de datos de invitado no existente, expected (404)', (done) => {
+                request(app)
+                    .put('/invited/update?email='+email)
+                    .send({
+                        "name": name + " Alejandro",
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres + " puerta 5",
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(404)
+                        expect(res.text).toBe('This invited does not exist')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+    
     
     
     

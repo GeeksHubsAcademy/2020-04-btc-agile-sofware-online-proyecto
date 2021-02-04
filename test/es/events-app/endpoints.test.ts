@@ -530,6 +530,28 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+        it('Actualizar evento 1 sin token, expected (401)', (done) => {
+            request(app)
+                .put('/event/update?url=event1')
+                .send({
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time,
+                    "addres": addres,
+                    "description": eventDescription + " modificada"
+                })
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
+                })
+                .end(async (err) => {
+                    if (err) return await done(err);
+                    done();
+                })
+        })
+
     })
 
 })

@@ -166,7 +166,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .post('/login')
             .send({
                 "email": email1,
-                "password": Pass+"-"
+                "password": Pass + "-"
             })
             .set('Accept', 'application/json')
             .expect(res => {
@@ -241,7 +241,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .put('/user/update?email=' + email1)
             .send({
-                "username": user+"1",
+                "username": user + "1",
                 "email": email1,
                 "password": Pass,
                 "name": userName,
@@ -264,7 +264,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .put('/user/update?email=' + email1)
             .send({
-                "username": user+"2",
+                "username": user + "2",
                 "email": email1,
                 "password": Pass,
                 "name": userName,
@@ -327,8 +327,8 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     describe('Test de endpoints evento', () => {
 
-        const eventName =  "event1";
-        const eventName2 =  "event2";
+        const eventName = "event1";
+        const eventName2 = "event2";
         const invitations = 3;
         const date = "12/02/2021"
         const time = "7:00";
@@ -701,15 +701,46 @@ describe('Test de endpoints, respuestas de conexión', () => {
         })
 
 
+        describe('Test de edpoints invitaciones ', () => {
+
+            it('Registro de invitado sin nombre(500)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": "manuel",
+                        "lastname": "Guerra Coello",
+                        "email": "invited@email.com",
+                        "phone": "123456789",
+                        "birthdate": "29/03/1994",
+                        "nacionality": "Española",
+                        "addres": "calle, nombre de calle",
+                        "country": "España",
+                        "city": "Madrid",
+                        "zipcode": "28000"
+                    })
+                    .set({ 'auth-token': token })
+                    .expect(res => {
+                        expect(res.status).toBe(500)
+                        expect(res.body.error).toBe('The name of the invited is required')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+        })
+
+
 
 
 
     })
 
 
-    afterAll(async(done) => {
+    afterAll(async (done) => {
         MongooseCon.MongoClose()
         done()
-      });
+    });
 })
 

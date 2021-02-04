@@ -30,4 +30,8 @@ export class MongooseCon implements mongooseI {
             });
 
     }
+
+    static async MongoClose(){
+        await mongoose.connection.close()
+    }
 }

@@ -1,6 +1,6 @@
 const request = require("supertest");
 import { app } from '../../../src/es/events-app/app';
-const mongoose = require('mongoose');
+import { MongooseCon } from '../../../src/es/events-app/config/DDBB/MongooseCon';
 
 describe('Test de endpoints, respuestas de conexión', () => {
 
@@ -578,7 +578,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
 
     afterAll(async(done) => {
-        mongoose.connection.close();
+        await MongooseCon.MongoClose()
         done()
       });
 })

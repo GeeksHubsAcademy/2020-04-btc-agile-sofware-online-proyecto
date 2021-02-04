@@ -9,7 +9,7 @@
   "scripts": {
     "start": "nodemon ./src/es/events-app/server.ts",
     "start:watch": "nodemon",
-    "test": "jest --watch --runInBand --detectOpenHandles",
+    "test": "jest --runInBand --detectOpenHandles",
     "build": "tsc"
   },
   "repository": {

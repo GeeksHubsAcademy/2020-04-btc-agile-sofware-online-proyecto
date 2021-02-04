@@ -152,7 +152,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .set('Accept', 'application/json')
             .expect(res => {
                 expect(res.status).toBe(200)
-                expect(res.body.message).toBe('You are Logged')
+                expect(res.body.message).toBe('You are loged')
             })
             .end((err, res) => {
                 token = res.headers['auth-token'];
@@ -349,7 +349,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
-                    expect(res.text).toBe('You are not logged in')
+                    expect(res.text).toBe('You are not loged in')
                 })
                 .end((err) => {
                     if (err) return done(err);
@@ -543,7 +543,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
-                    expect(res.text).toBe('You are not logged in')
+                    expect(res.text).toBe('You are not loged in')
                 })
                 .end((err) => {
                     if (err) return done(err);
@@ -617,7 +617,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
-        it('Obtener evento de usuario Loggeado, expected (200)', (done) => {
+        it('Obtener evento de usuario Logueado, expected (200)', (done) => {
             request(app)
                 .get('/events')
                 .set({ 'auth-token': token })
@@ -631,13 +631,13 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
-        it('Obtener evento de usuario no Loggeado, expected (401)', (done) => {
+        it('Obtener evento de usuario no Logueado, expected (401)', (done) => {
             request(app)
                 .get('/events')
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
-                    expect(res.text).toBe('You are not logged in')
+                    expect(res.text).toBe('You are not loged in')
                 })
                 .end((err) => {
                     if (err) return done(err);
@@ -646,7 +646,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
         })
 
 
-        it('Obtener evento 1 (único) de usuario Loggeado, expected (200)', (done) => {
+        it('Obtener evento 1 (único) de usuario Logueado, expected (200)', (done) => {
             request(app)
                 .get('/event?url=event1')
                 .set({ 'auth-token': token })
@@ -660,13 +660,13 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
-        it('Obtener evento 1 (único) de usuario no Loggeado, expected (401)', (done) => {
+        it('Obtener evento 1 (único) de usuario no Logueado, expected (401)', (done) => {
             request(app)
                 .get('/event?url=event1')
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
-                    expect(res.text).toBe('You are not logged in')
+                    expect(res.text).toBe('You are not loged in')
                 })
                 .end((err) => {
                     if (err) return done(err);

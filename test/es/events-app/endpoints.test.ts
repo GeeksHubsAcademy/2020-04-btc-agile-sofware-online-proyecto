@@ -361,7 +361,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
             request(app)
                 .post('/event/register')
                 .send({
-                    "name": eventName,
                     "invitations": invitations,
                     "date": date,
                     "time": time,

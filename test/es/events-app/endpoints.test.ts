@@ -95,6 +95,22 @@ describe('Test de endpoints, respuestas de conexión', () => {
             })
     })
 
+    it('Registro de usuario, expected (200)', (done) => {
+        request(app)
+            .post('/user/register')
+            .send()
+            .set('Accept', 'application/json')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User Registered')
+            })
+            .end(async (err) => {
+                if (err) return await done(err);
+                done();
+            })
+
+    })
+
 
 
 

@@ -314,7 +314,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     it('Obtener usuario no existente, expected (404)', (done) => {
         request(app)
-            .get('/user?email=' + email1)
+            .get('/user?email=' + email2)
             .set({ 'auth-token': token })
             .expect(res => {
                 expect(res.status).toBe(404)

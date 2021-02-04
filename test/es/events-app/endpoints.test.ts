@@ -243,7 +243,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .put('/user/update?email=' + email1)
             .send({
                 "username": user+"1",
-                "email": email2,
+                "email": email1,
                 "password": Pass,
                 "name": userName,
                 "lastname": userLastName

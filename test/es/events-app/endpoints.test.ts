@@ -75,6 +75,27 @@ describe('Test de endpoints, respuestas de conexión', () => {
             })
     })
 
+    it('Registro de usuario sin email, expected (500)', (done) => {
+        request(app)
+            .post('/user/register')
+            .send({
+                "username": "username",
+                "email": email1,
+                "password": "1234567-",
+                "name": "Manuel",
+                "lastname": "Guerra Coello"
+            })
+            .set('Accept', 'application/json')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('The email it\'s required')
+            })
+            .end(async (err) => {
+                if (err) return await done(err);
+                done();
+            })
+    })
+
 
 
 

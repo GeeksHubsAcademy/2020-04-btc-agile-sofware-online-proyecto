@@ -260,31 +260,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
     })
 
 
-    it('Actualización de usuario sin token, expected (500)', (done) => {
-
-        request(app)
-            .put('/user/update?email=' + email1)
-            .send({
-                "username": user+"2",
-                "email": email1,
-                "password": Pass,
-                "name": userName,
-                "lastname": userLastName
-            })
-            .unset('auth-token')
-            .expect(res => {
-                expect(res.status).toBe(500)
-                expect(res.body.error).toBe('jwt must be provided')
-            })
-            .end(async (err) => {
-                if (err) return await done(err);
-                done();
-            })
-
-
-    })
-
-
 
 
 

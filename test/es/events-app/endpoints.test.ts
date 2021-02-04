@@ -1041,7 +1041,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Obtener invitación de invitado registrado, expected (200)', (done) => {
                 request(app)
-                    .get('/invited/invitation?email=')
+                    .get('/invited/invitation?email=invited@email.com')
                     .expect(res => {
                         expect(res.status).toBe(200)
                         expect(res.body.message).toBe('Invited Founded')

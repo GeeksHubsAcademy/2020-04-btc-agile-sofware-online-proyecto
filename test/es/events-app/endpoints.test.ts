@@ -466,7 +466,14 @@ describe('Test de endpoints, respuestas de conexión', () => {
         it('Crear evento 1, expected (200)', (done) => {
             request(app)
                 .post('/event/register')
-                .send()
+                .send({
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time,
+                    "addres": addres,
+                    "description": eventDescription
+                })
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)

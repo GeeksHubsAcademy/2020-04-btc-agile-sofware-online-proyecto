@@ -966,7 +966,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado evento 3 (no existente), expected (404)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event2')
+                    .post('/invited/register?url=event3')
                     .send({
                         "name": name,
                         "lastname": lastName,

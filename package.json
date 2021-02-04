@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "nodemon ../Events/src/es/events-app/server.ts ",
+    "start": "nodemon ./src/es/events-app/server.ts",
     "start:watch": "nodemon",
     "test": "jest",
     "build": "tsc"

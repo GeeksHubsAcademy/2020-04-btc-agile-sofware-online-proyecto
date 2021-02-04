@@ -1067,7 +1067,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         })
 
-
         describe('Test endpoints eliminar invitaciónes', () => {
 
             const email = "invited@email.com"
@@ -1127,7 +1126,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     })
             })
         })
-
 
     })
 
@@ -1241,4 +1239,3 @@ describe('Test de endpoints, respuestas de conexión', () => {
         done()
     });
 })
-

@@ -312,6 +312,20 @@ describe('Test de endpoints, respuestas de conexión', () => {
             })
     })
 
+    it('Obtener usuario no existente, expected (404)', (done) => {
+        request(app)
+            .get('/user?email=' + email1)
+            .set({ 'auth-token': token })
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('This user does not Exist')
+            })
+            .end(async (err) => {
+                if (err) return await done(err);
+                done();
+            })
+    })
+
 
 
 

@@ -1136,7 +1136,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
         it('Eliminar evento 1 sin token, expected (401)', (done) => {
             request(app)
                 .delete('/event/delete?url=event1')
-                .set({ 'auth-token': token })
+                .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
                     expect(res.text).toBe('You are not logged in')
@@ -1149,7 +1149,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Eliminar evento no existente, expected (404)', (done) => {
             request(app)
-                .delete('/event/delete?url=event2')
+                .delete('/event/delete?url=event3')
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(404)
@@ -1163,7 +1163,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Eliminar evento 2, expected (200)', (done) => {
             request(app)
-                .delete('/event/delete?url=')
+                .delete('/event/delete?url=event2')
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)
@@ -1177,7 +1177,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Eliminar evento 1, expected (200)', (done) => {
             request(app)
-                .delete('/event/delete?url=')
+                .delete('/event/delete?url=event1')
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)

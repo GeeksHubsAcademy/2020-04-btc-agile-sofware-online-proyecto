@@ -329,7 +329,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
     describe('Test de endpoints evento', () => {
 
         const eventName =  "event1";
-        const eventName2 =  "event1";
+        const eventName2 =  "event2";
         const invitations = 3;
         const date = "12/02/2021"
         const time = "7:00";
@@ -489,7 +489,14 @@ describe('Test de endpoints, respuestas de conexión', () => {
         it('Crear evento 2, expected (200)', (done) => {
             request(app)
                 .post('/event/register')
-                .send()
+                .send({
+                    "name": eventName2,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time,
+                    "addres": addres,
+                    "description": eventDescription
+                })
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)

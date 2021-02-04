@@ -143,7 +143,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     })
 
-    it('Logging Usuario, expected (200)', (done) => {
+    it('Login Usuario, expected (200)', (done) => {
         request(app)
             .post('/login')
             .send({
@@ -162,12 +162,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
             })
     })
 
-    it('Logging Usuario, password invalido (401)', (done) => {
+    it('Login Usuario, password invalido (401)', (done) => {
         request(app)
             .post('/login')
             .send({
                 "email": email1,
-                "password": Pass
+                "password": Pass+"-"
             })
             .set('Accept', 'application/json')
             .expect(res => {

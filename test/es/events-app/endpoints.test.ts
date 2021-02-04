@@ -142,7 +142,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .post('/login')
             .send({
-                "email": "email2@gmail.com",
+                "email": "email@gmail.com",
                 "password": "1234567-"
             })
             .set('Accept', 'application/json')

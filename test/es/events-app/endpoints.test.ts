@@ -963,6 +963,31 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Registro de invitado evento 3 (no existente), expected (404)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event2')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email2,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(404)
+                        expect(res.text).toBe('This event does not exist')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
     
     
     

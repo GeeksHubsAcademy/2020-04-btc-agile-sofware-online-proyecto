@@ -838,6 +838,31 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Registro de invitado registrado anteriormente en evento 1 , expected (409)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": "invited2@gmail.com",
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(409)
+                        expect(res.text).toBe('You are already registered in this event')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
     
 
         })

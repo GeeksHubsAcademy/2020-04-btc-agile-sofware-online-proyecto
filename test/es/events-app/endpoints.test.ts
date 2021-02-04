@@ -541,7 +541,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "addres": addres,
                     "description": eventDescription + " modificada"
                 })
-                .set({ 'auth-token': token })
+                .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
                     expect(res.text).toBe('You are not logged in')

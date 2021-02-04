@@ -674,6 +674,20 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+        it('Obtener evento 1 (público), expected (200)', (done) => {
+            request(app)
+                .get('/event/public?url=event')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event Founded')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+
 
 
 

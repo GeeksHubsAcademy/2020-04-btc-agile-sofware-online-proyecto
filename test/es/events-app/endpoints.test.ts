@@ -687,6 +687,19 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+        it('Obtener evento 3 no existente (público), expected (404)', (done) => {
+            request(app)
+                .get('/event/public?url=event1')
+                .expect(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.text).toBe('This event does not exist')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
 
 
 

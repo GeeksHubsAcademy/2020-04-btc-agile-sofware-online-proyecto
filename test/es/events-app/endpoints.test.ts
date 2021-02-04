@@ -1195,7 +1195,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Eliminar usuario no existente, expected (404)', (done) => {
             request(app)
-                .delete('/user/delete?email=' + email1)
+                .delete('/user/delete?email=' + email2)
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(404)
@@ -1210,7 +1210,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
         it('Eliminar usuario sin token, expected (500)', (done) => {
             request(app)
                 .delete('/user/delete?email=' + email1)
-                .set({ 'auth-token': token })
+                .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(500)
                     expect(res.body.error).toBe('jwt must be provided')
@@ -1223,7 +1223,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Eliminar usuario, expected (200)', (done) => {
             request(app)
-                .delete('/user/delete?email=' + email2)
+                .delete('/user/delete?email=' + email1)
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)
@@ -1235,7 +1235,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
     })
-
 
     afterAll(async (done) => {
         MongooseCon.MongoClose()

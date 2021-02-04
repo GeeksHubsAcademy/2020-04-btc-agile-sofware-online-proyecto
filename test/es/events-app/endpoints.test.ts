@@ -663,7 +663,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
         it('Obtener evento 1 (único) de usuario no Loggeado, expected (401)', (done) => {
             request(app)
                 .get('/event?url=event1')
-                .set({ 'auth-token': token })
+                .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
                     expect(res.text).toBe('You are not logged in')

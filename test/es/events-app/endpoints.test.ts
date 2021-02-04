@@ -285,6 +285,21 @@ describe('Test de endpoints, respuestas de conexión', () => {
     })
 
 
+    it('Obtener usuario, expected (200)', (done) => {
+        request(app)
+            .get('/user?email=' + email2)
+            .set({ 'auth-token': token })
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User Found')
+            })
+            .end(async (err) => {
+                if (err) return await done(err);
+                done();
+            })
+    })
+
+
 
 
 

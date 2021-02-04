@@ -238,6 +238,28 @@ describe('Test de endpoints, respuestas de conexión', () => {
     })
 
 
+    it('Actualización de usuario con token, expected (200)', (done) => {
+        request(app)
+            .put('/user/update?email=' + email1)
+            .send({
+                "username": user+"1",
+                "email": email2,
+                "password": Pass,
+                "name": userName,
+                "lastname": userLastName
+            })
+            .set({ 'auth-token': token })
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User updated')
+            })
+            .end(async (err) => {
+                if (err) return await done(err);
+                done();
+            })
+    })
+
+
 
 
 

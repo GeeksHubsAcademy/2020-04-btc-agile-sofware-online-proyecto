@@ -217,6 +217,27 @@ describe('Test de endpoints, respuestas de conexión', () => {
             })
     })
 
+    it('Actualización de usuario con token usuario no existente, expected (404)', (done) => {
+        request(app)
+            .put('/user/update?email=' + email2)
+            .send({
+                "username": user,
+                "email": email1,
+                "password": Pass,
+                "name": userName,
+                "lastname": userLastName
+            })
+            .set({ 'auth-token': token })
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('This user does not Exist')
+            }).end(async (err) => {
+                if (err) return await done(err);
+                done();
+            })
+    })
+
+
 
 
 

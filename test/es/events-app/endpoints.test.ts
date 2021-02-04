@@ -405,7 +405,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 .send({
                     "name": eventName,
                     "invitations": invitations,
-                    "date": date,
                     "time": time,
                     "addres": addres,
                     "description": eventDescription

@@ -511,8 +511,8 @@ describe('Test de endpoints, respuestas de conexión', () => {
         it('Volver a crear evento 1, evento ya existente, expected (409)', (done) => {
             request(app)
                 .post('/event/register')
-                .send .send({
-                    "name": eventName+1,
+                .send({
+                    "name": eventName,
                     "invitations": invitations,
                     "date": date,
                     "time": time,

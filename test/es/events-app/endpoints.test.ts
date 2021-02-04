@@ -1051,6 +1051,19 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Obtener invitación de invitado no registrado, expected (404)', (done) => {
+                request(app)
+                    .get('/invited/invitation?email='+email)
+                    .expect(res => {
+                        expect(res.status).toBe(404)
+                        expect(res.text).toBe('You are not registered in any events')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
     
     
     

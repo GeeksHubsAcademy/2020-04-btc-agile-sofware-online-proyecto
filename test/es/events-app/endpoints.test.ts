@@ -573,6 +573,28 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+        it('Actualizar evento existente con nombre de otro evento existente, expected (409)', (done) => {
+            request(app)
+                .put('/event/update?url=event1')
+                .send({
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time + " pm",
+                    "addres": addres + " 2B",
+                    "description": eventDescription + " modificada"
+                })
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(409)
+                    expect(res.text).toBe('A event exist with this name, event could not be updated')
+                })
+                .end(async (err) => {
+                    if (err) return await done(err);
+                    done();
+                })
+        })
+
     })
 
 

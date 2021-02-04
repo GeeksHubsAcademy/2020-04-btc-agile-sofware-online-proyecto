@@ -1,3 +1,4 @@
+import {server} from "../../server";
 import { mongooseI } from "./mongooseI";
 const mongoose = require('mongoose');
 
@@ -32,8 +33,8 @@ export class MongooseCon implements mongooseI {
     }
 
     static async MongoClose(){
-        await mongoose.connection.close(function () {
-            console.log('Mongoose connection disconnected');
-          });
+        console.log("... Test Ended");
+        await mongoose.connection.dropDatabase();
+        await mongoose.connection.close();
     }
 }

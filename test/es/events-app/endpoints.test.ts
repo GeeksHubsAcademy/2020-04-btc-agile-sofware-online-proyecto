@@ -1077,6 +1077,45 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Eliminar invitación invitado 1, expected (200)', (done) => {
+                request(app)
+                    .delete('/invited/delete?email='+"no"+email)
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Deleted')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+    
+            it('Eliminar invitación invitado 2, expected (200)', (done) => {
+                request(app)
+                    .delete('/invited/delete?email='+"no"+email)
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Deleted')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+    
+            it('Eliminar invitación invitado 3, expected (200)', (done) => {
+                request(app)
+                    .delete('/invited/delete?email='+"no"+email)
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Deleted')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
     
     
     

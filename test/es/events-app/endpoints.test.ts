@@ -991,7 +991,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Actualización de datos de invitado evento 1, expected (200)', (done) => {
                 request(app)
-                    .put('/invited/update?email='+email)
+                    .put('/invited/update?email=' + email)
                     .send({
                         "name": name + " Alejandro",
                         "lastname": lastName,
@@ -1016,7 +1016,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Actualización de datos de invitado no existente, expected (404)', (done) => {
                 request(app)
-                    .put('/invited/update?email='+"no"+email3)
+                    .put('/invited/update?email=' + "no" + email3)
                     .send({
                         "name": name + " Alejandro",
                         "lastname": lastName,
@@ -1054,7 +1054,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Obtener invitación de invitado no registrado, expected (404)', (done) => {
                 request(app)
-                    .get('/invited/invitation?email='+"no"+email)
+                    .get('/invited/invitation?email=' + "no" + email)
                     .expect(res => {
                         expect(res.status).toBe(404)
                         expect(res.text).toBe('You are not registered in any events')
@@ -1065,9 +1065,19 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     })
             })
 
+        })
+
+
+        describe('Test endpoints eliminar invitaciónes', () => {
+
+            const email = "invited@email.com"
+            const email2 = "invited2@email.com"
+            const email3 = "invited3@email.com"
+            const email4 = "invited4@email.com"
+
             it('Eliminar invitación no existente, expected (404)', (done) => {
                 request(app)
-                    .delete('/invited/delete?email='+"no"+email)
+                    .delete('/invited/delete?email=' + email4)
                     .expect(res => {
                         expect(res.status).toBe(404)
                         expect(res.text).toBe('This invited does not exist')
@@ -1080,7 +1090,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Eliminar invitación invitado 1, expected (200)', (done) => {
                 request(app)
-                    .delete('/invited/delete?email='+email)
+                    .delete('/invited/delete?email=' + email)
                     .expect(res => {
                         expect(res.status).toBe(200)
                         expect(res.body.message).toBe('Invited Deleted')
@@ -1090,10 +1100,10 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
-    
+
             it('Eliminar invitación invitado 2, expected (200)', (done) => {
                 request(app)
-                    .delete('/invited/delete?email='+email2)
+                    .delete('/invited/delete?email=' + email2)
                     .expect(res => {
                         expect(res.status).toBe(200)
                         expect(res.body.message).toBe('Invited Deleted')
@@ -1103,10 +1113,10 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
-    
+
             it('Eliminar invitación invitado 3, expected (200)', (done) => {
                 request(app)
-                    .delete('/invited/delete?email='+email3)
+                    .delete('/invited/delete?email=' + email3)
                     .expect(res => {
                         expect(res.status).toBe(200)
                         expect(res.body.message).toBe('Invited Deleted')
@@ -1116,16 +1126,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
-    
-    
-    
-    
-
         })
-
-     
-
-
 
 
     })

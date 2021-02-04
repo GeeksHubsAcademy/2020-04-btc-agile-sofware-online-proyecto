@@ -427,7 +427,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "name": eventName,
                     "invitations": invitations,
                     "date": date,
-                    "time": time,
                     "addres": addres,
                     "description": eventDescription
                 })

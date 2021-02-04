@@ -739,6 +739,32 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     })
             })
 
+            it('Registro de invitado sin apellido (500)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .set({ 'auth-token': token })
+                    .expect(res => {
+                        expect(res.status).toBe(500)
+                        expect(res.body.error).toBe('The lastname of the invited is required')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
         })
 
 

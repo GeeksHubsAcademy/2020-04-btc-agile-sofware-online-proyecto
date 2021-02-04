@@ -597,7 +597,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Actualizar evento no existente, expected (404)', (done) => {
             request(app)
-                .put('/event/update?url=event1')
+                .put('/event/update?url=event3')
                 .send({
                     "name": eventName,
                     "invitations": invitations,

@@ -1067,7 +1067,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Eliminar invitación no existente, expected (404)', (done) => {
                 request(app)
-                    .delete('/invited/delete?email='+email)
+                    .delete('/invited/delete?email='+"no"+email)
                     .expect(res => {
                         expect(res.status).toBe(404)
                         expect(res.text).toBe('This invited does not exist')

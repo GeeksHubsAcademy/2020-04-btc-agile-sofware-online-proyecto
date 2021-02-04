@@ -197,6 +197,26 @@ describe('Test de endpoints, respuestas de conexión', () => {
             })
     })
 
+    it('Actualización de usuario con token password menor a 8 carácteres, expected (500)', (done) => {
+        request(app)
+            .put('/user/update?email=' + email1)
+            .send({
+                "username": user,
+                "email": email1,
+                "password": Pass,
+                "name": userName,
+                "lastname": userLastName
+            })
+            .set({ 'auth-token': token })
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
+            }).end(async (err) => {
+                if (err) return await done(err);
+                done();
+            })
+    })
+
 
 
 

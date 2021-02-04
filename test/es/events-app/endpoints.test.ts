@@ -1131,6 +1131,66 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     })
 
+    describe('Test endpoints Eliminar eventos', () => {
+
+        it('Eliminar evento 1 sin token, expected (401)', (done) => {
+            request(app)
+                .delete('/event/delete?url=event1')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Eliminar evento no existente, expected (404)', (done) => {
+            request(app)
+                .delete('/event/delete?url=event2')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.text).toBe('This event does not exist')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Eliminar evento 2, expected (200)', (done) => {
+            request(app)
+                .delete('/event/delete?url=')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event Deleted')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Eliminar evento 1, expected (200)', (done) => {
+            request(app)
+                .delete('/event/delete?url=')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event Deleted')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+    })
+
 
     afterAll(async (done) => {
         MongooseCon.MongoClose()

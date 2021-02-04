@@ -301,7 +301,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
     it('Obtener usuario sin token, expected (500)', (done) => {
         request(app)
             .get('/user?email=' + email1)
-            .set({ 'auth-token': token })
+            .unset('auth-token')
             .expect(res => {
                 expect(res.status).toBe(500)
                 expect(res.body.error).toBe('jwt must be provided')

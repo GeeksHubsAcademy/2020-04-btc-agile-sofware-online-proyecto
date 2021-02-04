@@ -152,7 +152,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .set('Accept', 'application/json')
             .expect(res => {
                 expect(res.status).toBe(200)
-                expect(res.body.message).toBe('You are loged')
+                expect(res.body.message).toBe('You are Logged')
             })
             .end((err, res) => {
                 token = res.headers['auth-token'];
@@ -349,7 +349,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
-                    expect(res.text).toBe('You are not loged in')
+                    expect(res.text).toBe('You are not logged in')
                 })
                 .end((err) => {
                     if (err) return done(err);
@@ -543,7 +543,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
-                    expect(res.text).toBe('You are not loged in')
+                    expect(res.text).toBe('You are not logged in')
                 })
                 .end((err) => {
                     if (err) return done(err);
@@ -637,7 +637,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
-                    expect(res.text).toBe('You are not loged in')
+                    expect(res.text).toBe('You are not logged in')
                 })
                 .end((err) => {
                     if (err) return done(err);
@@ -666,7 +666,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
-                    expect(res.text).toBe('You are not loged in')
+                    expect(res.text).toBe('You are not logged in')
                 })
                 .end((err) => {
                     if (err) return done(err);
@@ -676,7 +676,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Obtener evento 1 (público), expected (200)', (done) => {
             request(app)
-                .get('/event/public?url=event')
+                .get('/event/public?url=event1')
                 .expect(res => {
                     expect(res.status).toBe(200)
                     expect(res.body.message).toBe('Event Founded')

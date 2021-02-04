@@ -162,6 +162,24 @@ describe('Test de endpoints, respuestas de conexión', () => {
             })
     })
 
+    it('Logging Usuario, password invalido (401)', (done) => {
+        request(app)
+            .post('/login')
+            .send({
+                "email": email1,
+                "password": Pass
+            })
+            .set('Accept', 'application/json')
+            .expect(res => {
+                expect(res.status).toBe(401)
+                expect(res.text).toBe('Invalid Password!')
+            })
+            .end(async (err,) => {
+                if (err) return await done(err);
+                done();
+            })
+    })
+
 
 
 

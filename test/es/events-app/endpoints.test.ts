@@ -554,7 +554,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Actualizar evento 1, expected (200)', (done) => {
             request(app)
-                .put('/event/update?url=event')
+                .put('/event/update?url=event1')
                 .send({
                     "name": eventName,
                     "invitations": invitations,

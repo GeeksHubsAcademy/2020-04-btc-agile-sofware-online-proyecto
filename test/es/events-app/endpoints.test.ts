@@ -328,16 +328,23 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     describe('Test de endpoints evento', () => {
 
+        const eventName =  "event1";
+        const invitations = 3;
+        const date = "12/02/2021"
+        const time = "7:00";
+        const addres = "c/ nombre de calle";
+        const eventDescription = "esto es una descripción";
+
         it('Crear evento 1 sin token, expected (401)', (done) => {
             request(app)
                 .post('/event/register')
                 .send({
-                    "name": "event1",
-                    "invitations": 3,
-                    "date": "12/02/2021",
-                    "time": "7:00",
-                    "addres": "c/ nombre de calle",
-                    "description": "esto es una descripción"
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time,
+                    "addres": addres,
+                    "description": eventDescription
                 })
                 .unset('auth-token')
                 .expect(res => {

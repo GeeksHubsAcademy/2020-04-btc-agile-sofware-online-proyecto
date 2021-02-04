@@ -98,7 +98,13 @@ describe('Test de endpoints, respuestas de conexión', () => {
     it('Registro de usuario, expected (200)', (done) => {
         request(app)
             .post('/user/register')
-            .send()
+            .send({
+                "username": "username",
+                "email": email1,
+                "password": "1234567-",
+                "name": "Manuel",
+                "lastname": "Guerra Coello"
+            })
             .set('Accept', 'application/json')
             .expect(res => {
                 expect(res.status).toBe(200)

@@ -649,7 +649,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
         it('Obtener evento 1 (único) de usuario Loggeado, expected (200)', (done) => {
             request(app)
                 .get('/event?url=event1')
-                .unset('auth-token')
+                .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)
                     expect(res.body.message).toBe('Event Founded')

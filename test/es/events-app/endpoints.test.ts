@@ -284,10 +284,9 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     })
 
-
     it('Obtener usuario, expected (200)', (done) => {
         request(app)
-            .get('/user?email=' + email2)
+            .get('/user?email=' + email1)
             .set({ 'auth-token': token })
             .expect(res => {
                 expect(res.status).toBe(200)

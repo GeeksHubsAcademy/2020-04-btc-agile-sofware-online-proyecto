@@ -80,7 +80,6 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .post('/user/register')
             .send({
                 "username": "username",
-                "email": email1,
                 "password": "1234567-",
                 "name": "Manuel",
                 "lastname": "Guerra Coello"

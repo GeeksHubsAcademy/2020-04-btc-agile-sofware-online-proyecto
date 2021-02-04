@@ -26,12 +26,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "lastname": userLastName
                 })
                 .set('Accept', 'application/json')
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -47,12 +47,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('The password it\'s required')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('The password it\'s required')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
 
@@ -69,12 +69,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('the username it\'s required')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('the username it\'s required')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -89,12 +89,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('The email it\'s required')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('The email it\'s required')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -110,12 +110,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(200)
-                await expect(res.body.message).toBe('User Registered')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User Registered')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
 
@@ -131,12 +131,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "name": userName,
                 "lastname": userLastName
             })
-            .expect(async res => {
-                await expect(res.status).toBe(409)
-                await expect(res.text).toBe('Email already Exist')
+            .expect(res => {
+                expect(res.status).toBe(409)
+                expect(res.text).toBe('Email already Exist')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
 
@@ -150,13 +150,13 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "password": Pass
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(200)
-                await expect(res.body.message).toBe('You are Logged')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('You are Logged')
             })
-            .end(async (err, res) => {
+            .end((err, res) => {
                 token = res.headers['auth-token'];
-                if (err) return await done(err);
+                if (err) return done(err);
                 done();
             })
     })
@@ -169,12 +169,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "password": Pass+"-"
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(401)
-                await expect(res.text).toBe('Invalid Password!')
+            .expect(res => {
+                expect(res.status).toBe(401)
+                expect(res.text).toBe('Invalid Password!')
             })
-            .end(async (err,) => {
-                if (err) return await done(err);
+            .end((err,) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -187,11 +187,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "password": Pass
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(404)
-                await expect(res.text).toBe('email is not found')
-            }).end(async (err, res) => {
-                if (err) return await done(err);
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('email is not found')
+            }).end((err, res) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -207,11 +207,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
-            }).end(async (err) => {
-                if (err) return await done(err);
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
+            }).end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -227,11 +227,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(404)
-                await expect(res.text).toBe('This user does not Exist')
-            }).end(async (err) => {
-                if (err) return await done(err);
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('This user does not Exist')
+            }).end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -248,12 +248,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(200)
-                await expect(res.body.message).toBe('User updated')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User updated')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -271,12 +271,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .unset('auth-token')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('jwt must be provided')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('jwt must be provided')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
 
@@ -287,12 +287,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .get('/user?email=' + email1)
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(200)
-                await expect(res.body.message).toBe('User Found')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User Found')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -301,12 +301,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .get('/user?email=' + email1)
             .unset('auth-token')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('jwt must be provided')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('jwt must be provided')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -315,12 +315,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .get('/user?email=' + email2)
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(404)
-                await expect(res.text).toBe('This user does not Exist')
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('This user does not Exist')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -347,12 +347,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .unset('auth-token')
-                .expect(async res => {
-                    await expect(res.status).toBe(401)
-                    await expect(res.text).toBe('You are not logged in')
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -368,12 +368,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The name of the event is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The name of the event is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -389,12 +389,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The number of invitations is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The number of invitations is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -410,12 +410,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The date of the event is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The date of the event is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -431,12 +431,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The time of the event is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The time of the event is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -453,12 +453,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The addres is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The addres is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -475,12 +475,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(200)
-                    await expect(res.body.message).toBe('Event created')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event created')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -497,12 +497,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(200)
-                    await expect(res.body.message).toBe('Event created')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event created')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -519,12 +519,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(409)
-                    await expect(res.text).toBe('This event Already Exist')
+                .expect(res => {
+                    expect(res.status).toBe(409)
+                    expect(res.text).toBe('This event Already Exist')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -541,12 +541,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription + " modificada"
                 })
                 .unset('auth-token')
-                .expect(async res => {
-                    await expect(res.status).toBe(401)
-                    await expect(res.text).toBe('You are not logged in')
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -563,12 +563,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription + " modificada"
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(200)
-                    await expect(res.body.message).toBe('Event updated')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event updated')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -577,7 +577,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
 
     afterAll(async(done) => {
-        await MongooseCon.MongoClose()
+        MongooseCon.MongoClose()
         done()
       });
 })

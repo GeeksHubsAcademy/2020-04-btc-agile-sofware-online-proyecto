@@ -463,6 +463,21 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+        it('Crear evento 1, expected (200)', (done) => {
+            request(app)
+                .post('/event/register')
+                .send()
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event created')
+                })
+                .end(async (err) => {
+                    if (err) return await done(err);
+                    done();
+                })
+        })
+
     })
 
 })

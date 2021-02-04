@@ -845,7 +845,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     .send({
                         "name": name,
                         "lastname": lastName,
-                        "email": "invited2@gmail.com",
+                        "email": email,
                         "phone": phone,
                         "birthdate": birth,
                         "nacionality": nacionality,

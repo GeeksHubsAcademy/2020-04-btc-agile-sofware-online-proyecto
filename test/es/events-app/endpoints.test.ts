@@ -575,7 +575,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Actualizar evento existente con nombre de otro evento existente, expected (409)', (done) => {
             request(app)
-                .put('/event/update?url=event1')
+                .put('/event/update?url=event2')
                 .send({
                     "name": eventName,
                     "invitations": invitations,

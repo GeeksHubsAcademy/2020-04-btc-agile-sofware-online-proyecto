@@ -988,6 +988,31 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Actualización de datos de invitado evento 1, expected (200)', (done) => {
+                request(app)
+                    .put('/invited/update?email=')
+                    .send({
+                        "name": name + " Alejandro",
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres + " puerta 5",
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Updated')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
     
     
     

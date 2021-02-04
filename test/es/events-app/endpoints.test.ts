@@ -1016,7 +1016,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Actualización de datos de invitado no existente, expected (404)', (done) => {
                 request(app)
-                    .put('/invited/update?email='+email)
+                    .put('/invited/update?email='+"no"+email3)
                     .send({
                         "name": name + " Alejandro",
                         "lastname": lastName,

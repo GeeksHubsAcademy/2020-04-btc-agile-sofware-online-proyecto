@@ -138,6 +138,25 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     })
 
+    it('Logging Usuario, expected (200)', (done) => {
+        request(app)
+            .post('/login')
+            .send({
+                "email": "email2@gmail.com",
+                "password": "1234567-"
+            })
+            .set('Accept', 'application/json')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('You are Logged')
+            })
+            .end(async (err, res) => {
+                token = res.headers['auth-token'];
+                if (err) return await done(err);
+                done();
+            })
+    })
+
 
 
 

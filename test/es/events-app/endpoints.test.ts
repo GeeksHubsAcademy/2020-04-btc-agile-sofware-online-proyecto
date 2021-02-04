@@ -1038,6 +1038,19 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Obtener invitación de invitado registrado, expected (200)', (done) => {
+                request(app)
+                    .get('/invited/invitation?email=')
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Founded')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
     
     
     

@@ -4,5 +4,7 @@ stages:
   - test 
 before_script:
   - npm ci
+services:
+  - mongodb
 script:
   - npm test

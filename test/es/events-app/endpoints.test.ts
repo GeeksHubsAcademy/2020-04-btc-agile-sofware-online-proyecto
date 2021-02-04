@@ -180,6 +180,23 @@ describe('Test de endpoints, respuestas de conexión', () => {
             })
     })
 
+    it('Login Usuario, Usuario no existente expected (404)', (done) => {
+        request(app)
+            .post('/login')
+            .send({
+                "email": email1,
+                "password": Pass
+            })
+            .set('Accept', 'application/json')
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('email is not found')
+            }).end(async (err, res) => {
+                if (err) return await done(err);
+                done();
+            })
+    })
+
 
 
 

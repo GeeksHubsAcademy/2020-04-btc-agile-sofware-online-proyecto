@@ -941,7 +941,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado en evento 2, expected (200)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event')
+                    .post('/invited/register?url=event2')
                     .send({
                         "name": name,
                         "lastname": lastName,

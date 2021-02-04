@@ -1080,7 +1080,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Eliminar invitación invitado 1, expected (200)', (done) => {
                 request(app)
-                    .delete('/invited/delete?email='+"no"+email)
+                    .delete('/invited/delete?email='+email)
                     .expect(res => {
                         expect(res.status).toBe(200)
                         expect(res.body.message).toBe('Invited Deleted')
@@ -1093,7 +1093,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
     
             it('Eliminar invitación invitado 2, expected (200)', (done) => {
                 request(app)
-                    .delete('/invited/delete?email='+"no"+email)
+                    .delete('/invited/delete?email='+email2)
                     .expect(res => {
                         expect(res.status).toBe(200)
                         expect(res.body.message).toBe('Invited Deleted')
@@ -1106,7 +1106,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
     
             it('Eliminar invitación invitado 3, expected (200)', (done) => {
                 request(app)
-                    .delete('/invited/delete?email='+"no"+email)
+                    .delete('/invited/delete?email='+email3)
                     .expect(res => {
                         expect(res.status).toBe(200)
                         expect(res.body.message).toBe('Invited Deleted')

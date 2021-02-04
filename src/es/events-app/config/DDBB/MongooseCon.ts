@@ -32,6 +32,8 @@ export class MongooseCon implements mongooseI {
     }
 
     static async MongoClose(){
-        await mongoose.connection.close()
+        await mongoose.connection.close(function () {
+            console.log('Mongoose connection disconnected');
+          });
     }
 }

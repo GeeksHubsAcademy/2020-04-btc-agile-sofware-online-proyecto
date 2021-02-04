@@ -441,6 +441,29 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+
+        it('Crear evento, sin dirección expected (500)', (done) => {
+            request(app)
+                .post('/event/register')
+                .send({
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time,
+                    "addres": addres,
+                    "description": eventDescription
+                })
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The addres is required')
+                })
+                .end(async (err) => {
+                    if (err) return await done(err);
+                    done();
+                })
+        })
+
     })
 
 })

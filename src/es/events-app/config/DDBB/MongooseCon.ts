@@ -1,4 +1,3 @@
-import {server} from "../../server";
 import { mongooseI } from "./mongooseI";
 const mongoose = require('mongoose');
 

@@ -552,6 +552,28 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+        it('Actualizar evento 1, expected (200)', (done) => {
+            request(app)
+                .put('/event/update?url=event')
+                .send({
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time + " pm",
+                    "addres": addres + " 2B",
+                    "description": eventDescription + " modificada"
+                })
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event updated')
+                })
+                .end(async (err) => {
+                    if (err) return await done(err);
+                    done();
+                })
+        })
+
     })
 
 })

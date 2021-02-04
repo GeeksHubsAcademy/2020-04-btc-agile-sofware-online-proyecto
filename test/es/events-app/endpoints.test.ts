@@ -26,12 +26,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "lastname": userLastName
                 })
                 .set('Accept', 'application/json')
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -47,12 +47,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('The password it\'s required')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('The password it\'s required')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
 
@@ -69,12 +69,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('the username it\'s required')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('the username it\'s required')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -89,12 +89,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('The email it\'s required')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('The email it\'s required')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -110,12 +110,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(200)
-                await expect(res.body.message).toBe('User Registered')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User Registered')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
 
@@ -131,12 +131,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "name": userName,
                 "lastname": userLastName
             })
-            .expect(async res => {
-                await expect(res.status).toBe(409)
-                await expect(res.text).toBe('Email already Exist')
+            .expect(res => {
+                expect(res.status).toBe(409)
+                expect(res.text).toBe('Email already Exist')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
 
@@ -150,13 +150,13 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "password": Pass
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(200)
-                await expect(res.body.message).toBe('You are Logged')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('You are Logged')
             })
-            .end(async (err, res) => {
+            .end((err, res) => {
                 token = res.headers['auth-token'];
-                if (err) return await done(err);
+                if (err) return done(err);
                 done();
             })
     })
@@ -166,15 +166,15 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .post('/login')
             .send({
                 "email": email1,
-                "password": Pass+"-"
+                "password": Pass + "-"
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(401)
-                await expect(res.text).toBe('Invalid Password!')
+            .expect(res => {
+                expect(res.status).toBe(401)
+                expect(res.text).toBe('Invalid Password!')
             })
-            .end(async (err,) => {
-                if (err) return await done(err);
+            .end((err,) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -187,11 +187,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "password": Pass
             })
             .set('Accept', 'application/json')
-            .expect(async res => {
-                await expect(res.status).toBe(404)
-                await expect(res.text).toBe('email is not found')
-            }).end(async (err, res) => {
-                if (err) return await done(err);
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('email is not found')
+            }).end((err, res) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -207,11 +207,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
-            }).end(async (err) => {
-                if (err) return await done(err);
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('Password is shorter than the minimum allowed length (8)')
+            }).end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -227,11 +227,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 "lastname": userLastName
             })
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(404)
-                await expect(res.text).toBe('This user does not Exist')
-            }).end(async (err) => {
-                if (err) return await done(err);
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('This user does not Exist')
+            }).end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -241,19 +241,19 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .put('/user/update?email=' + email1)
             .send({
-                "username": user+"1",
+                "username": user + "1",
                 "email": email1,
                 "password": Pass,
                 "name": userName,
                 "lastname": userLastName
             })
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(200)
-                await expect(res.body.message).toBe('User updated')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User updated')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -264,19 +264,19 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .put('/user/update?email=' + email1)
             .send({
-                "username": user+"2",
+                "username": user + "2",
                 "email": email1,
                 "password": Pass,
                 "name": userName,
                 "lastname": userLastName
             })
             .unset('auth-token')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('jwt must be provided')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('jwt must be provided')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
 
@@ -287,12 +287,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .get('/user?email=' + email1)
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(200)
-                await expect(res.body.message).toBe('User Found')
+            .expect(res => {
+                expect(res.status).toBe(200)
+                expect(res.body.message).toBe('User Found')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -301,12 +301,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .get('/user?email=' + email1)
             .unset('auth-token')
-            .expect(async res => {
-                await expect(res.status).toBe(500)
-                await expect(res.body.error).toBe('jwt must be provided')
+            .expect(res => {
+                expect(res.status).toBe(500)
+                expect(res.body.error).toBe('jwt must be provided')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
@@ -315,20 +315,20 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .get('/user?email=' + email2)
             .set({ 'auth-token': token })
-            .expect(async res => {
-                await expect(res.status).toBe(404)
-                await expect(res.text).toBe('This user does not Exist')
+            .expect(res => {
+                expect(res.status).toBe(404)
+                expect(res.text).toBe('This user does not Exist')
             })
-            .end(async (err) => {
-                if (err) return await done(err);
+            .end((err) => {
+                if (err) return done(err);
                 done();
             })
     })
 
     describe('Test de endpoints evento', () => {
 
-        const eventName =  "event1";
-        const eventName2 =  "event2";
+        const eventName = "event1";
+        const eventName2 = "event2";
         const invitations = 3;
         const date = "12/02/2021"
         const time = "7:00";
@@ -347,12 +347,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .unset('auth-token')
-                .expect(async res => {
-                    await expect(res.status).toBe(401)
-                    await expect(res.text).toBe('You are not logged in')
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -368,12 +368,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The name of the event is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The name of the event is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -389,12 +389,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The number of invitations is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The number of invitations is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -410,12 +410,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The date of the event is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The date of the event is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -431,12 +431,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The time of the event is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The time of the event is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -453,12 +453,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(500)
-                    await expect(res.body.error).toBe('The addres is required')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('The addres is required')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -475,12 +475,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(200)
-                    await expect(res.body.message).toBe('Event created')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event created')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -497,12 +497,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(200)
-                    await expect(res.body.message).toBe('Event created')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event created')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -519,12 +519,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(409)
-                    await expect(res.text).toBe('This event Already Exist')
+                .expect(res => {
+                    expect(res.status).toBe(409)
+                    expect(res.text).toBe('This event Already Exist')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -541,12 +541,12 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription + " modificada"
                 })
                 .unset('auth-token')
-                .expect(async res => {
-                    await expect(res.status).toBe(401)
-                    await expect(res.text).toBe('You are not logged in')
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
@@ -563,22 +563,679 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     "description": eventDescription + " modificada"
                 })
                 .set({ 'auth-token': token })
-                .expect(async res => {
-                    await expect(res.status).toBe(200)
-                    await expect(res.body.message).toBe('Event updated')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event updated')
                 })
-                .end(async (err) => {
-                    if (err) return await done(err);
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Actualizar evento existente con nombre de otro evento existente, expected (409)', (done) => {
+            request(app)
+                .put('/event/update?url=event2')
+                .send({
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time + " pm",
+                    "addres": addres + " 2B",
+                    "description": eventDescription + " modificada"
+                })
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(409)
+                    expect(res.text).toBe('A event exist with this name, event could not be updated')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Actualizar evento no existente, expected (404)', (done) => {
+            request(app)
+                .put('/event/update?url=event3')
+                .send({
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time + " pm",
+                    "addres": addres + " 2B",
+                    "description": eventDescription + " modificada"
+                })
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.text).toBe('This event does not exist')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Obtener evento de usuario Logueado, expected (200)', (done) => {
+            request(app)
+                .get('/events')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Events Founded')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Obtener evento de usuario no Logueado, expected (401)', (done) => {
+            request(app)
+                .get('/events')
+                .unset('auth-token')
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+
+        it('Obtener evento 1 (único) de usuario Logueado, expected (200)', (done) => {
+            request(app)
+                .get('/event?url=event1')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event Founded')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Obtener evento 1 (único) de usuario no Logueado, expected (401)', (done) => {
+            request(app)
+                .get('/event?url=event1')
+                .unset('auth-token')
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Obtener evento 1 (público), expected (200)', (done) => {
+            request(app)
+                .get('/event/public?url=event1')
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event Founded')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Obtener evento 3 no existente (público), expected (404)', (done) => {
+            request(app)
+                .get('/event/public?url=event3')
+                .expect(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.text).toBe('This event does not exist')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+
+        describe('Test de edpoints invitaciones ', () => {
+
+            const name = "manuel";
+            const lastName = "Guerra Coello";
+            const email = "invited@email.com"
+            const email2 = "invited2@email.com"
+            const email3 = "invited3@email.com"
+            const email4 = "invited4@email.com"
+            const phone = "123456789";
+            const birth = "29/03/1994";
+            const nacionality = "Española"
+            const addres = "calle, nombre de calle"
+            const country = "España";
+            const city = "Madrid";
+            const zipCode = "28000"
+
+            it('Registro de invitado sin nombre(500)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .set({ 'auth-token': token })
+                    .expect(res => {
+                        expect(res.status).toBe(500)
+                        expect(res.body.error).toBe('The name of the invited is required')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado sin apellido (500)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .set({ 'auth-token': token })
+                    .expect(res => {
+                        expect(res.status).toBe(500)
+                        expect(res.body.error).toBe('The lastname of the invited is required')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+
+            it('Registro de invitado sin email (500)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .set({ 'auth-token': token })
+                    .expect(res => {
+                        expect(res.status).toBe(500)
+                        expect(res.body.error).toBe('The email of the invited is required')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado sin número de teléfono (500)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .set({ 'auth-token': token })
+                    .expect(res => {
+                        expect(res.status).toBe(500)
+                        expect(res.body.error).toBe('The phone number of the invited is required')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado en evento 1, expected (200)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Created')
+                    }).end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado registrado anteriormente en evento 1 , expected (409)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(409)
+                        expect(res.text).toBe('You are already registered in this event')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado 2 en evento 1, expected (200)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email2,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Created')
+                    }).end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado 3 en evento 1, expected (200)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email3,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Created')
+                    }).end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado 4 en evento 1, no hay invitaciones disponibles expected (409)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email4,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(409)
+                        expect(res.text).toBe('This event does not have invitations left')
+                    }).end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado en evento 2, expected (200)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event2')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Created')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Registro de invitado evento 3 (no existente), expected (404)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event3')
+                    .send({
+                        "name": name,
+                        "lastname": lastName,
+                        "email": email2,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres,
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(404)
+                        expect(res.text).toBe('This event does not exist')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Actualización de datos de invitado evento 1, expected (200)', (done) => {
+                request(app)
+                    .put('/invited/update?email=' + email)
+                    .send({
+                        "name": name + " Alejandro",
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres + " puerta 5",
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Updated')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Actualización de datos de invitado no existente, expected (404)', (done) => {
+                request(app)
+                    .put('/invited/update?email=' + "no" + email3)
+                    .send({
+                        "name": name + " Alejandro",
+                        "lastname": lastName,
+                        "email": email,
+                        "phone": phone,
+                        "birthdate": birth,
+                        "nacionality": nacionality,
+                        "addres": addres + " puerta 5",
+                        "country": country,
+                        "city": city,
+                        "zipcode": zipCode
+                    })
+                    .expect(res => {
+                        expect(res.status).toBe(404)
+                        expect(res.text).toBe('This invited does not exist')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Obtener invitación de invitado registrado, expected (200)', (done) => {
+                request(app)
+                    .get('/invited/invitation?email=invited@email.com')
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Founded')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Obtener invitación de invitado no registrado, expected (404)', (done) => {
+                request(app)
+                    .get('/invited/invitation?email=' + "no" + email)
+                    .expect(res => {
+                        expect(res.status).toBe(404)
+                        expect(res.text).toBe('You are not registered in any events')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+        })
+
+        describe('Test endpoints eliminar invitaciónes', () => {
+
+            const email = "invited@email.com"
+            const email2 = "invited2@email.com"
+            const email3 = "invited3@email.com"
+            const email4 = "invited4@email.com"
+
+            it('Eliminar invitación no existente, expected (404)', (done) => {
+                request(app)
+                    .delete('/invited/delete?email=' + email4)
+                    .expect(res => {
+                        expect(res.status).toBe(404)
+                        expect(res.text).toBe('This invited does not exist')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Eliminar invitación invitado 1, expected (200)', (done) => {
+                request(app)
+                    .delete('/invited/delete?email=' + email)
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Deleted')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Eliminar invitación invitado 2, expected (200)', (done) => {
+                request(app)
+                    .delete('/invited/delete?email=' + email2)
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Deleted')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+
+            it('Eliminar invitación invitado 3, expected (200)', (done) => {
+                request(app)
+                    .delete('/invited/delete?email=' + email3)
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Deleted')
+                    })
+                    .end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
+        })
+
+    })
+
+    describe('Test endpoints Eliminar eventos', () => {
+
+        it('Eliminar evento 1 sin token, expected (401)', (done) => {
+            request(app)
+                .delete('/event/delete?url=event1')
+                .unset('auth-token')
+                .expect(res => {
+                    expect(res.status).toBe(401)
+                    expect(res.text).toBe('You are not logged in')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Eliminar evento no existente, expected (404)', (done) => {
+            request(app)
+                .delete('/event/delete?url=event3')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.text).toBe('This event does not exist')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Eliminar evento 2, expected (200)', (done) => {
+            request(app)
+                .delete('/event/delete?url=event2')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event Deleted')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Eliminar evento 1, expected (200)', (done) => {
+            request(app)
+                .delete('/event/delete?url=event1')
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('Event Deleted')
+                })
+                .end((err) => {
+                    if (err) return done(err);
                     done();
                 })
         })
 
     })
 
+    describe('test ednpoints eliminar usuario', () => {
 
-    afterAll(async(done) => {
-        await MongooseCon.MongoClose()
+        it('Eliminar usuario no existente, expected (404)', (done) => {
+            request(app)
+                .delete('/user/delete?email=' + email2)
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.text).toBe('This user does not Exist')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Eliminar usuario sin token, expected (500)', (done) => {
+            request(app)
+                .delete('/user/delete?email=' + email1)
+                .unset('auth-token')
+                .expect(res => {
+                    expect(res.status).toBe(500)
+                    expect(res.body.error).toBe('jwt must be provided')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+
+        it('Eliminar usuario, expected (200)', (done) => {
+            request(app)
+                .delete('/user/delete?email=' + email1)
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(200)
+                    expect(res.body.message).toBe('User Deleted')
+                })
+                .end((err) => {
+                    if (err) return done(err);
+                    done();
+                })
+        })
+    })
+
+    afterAll(async (done) => {
+        MongooseCon.MongoClose()
         done()
-      });
+    });
 })
-

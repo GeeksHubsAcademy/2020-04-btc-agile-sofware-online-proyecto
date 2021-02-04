@@ -1,4 +1,4 @@
-import { MongooseCon } from "./mongoose";
+import { MongooseCon } from "./MongooseCon";
 
 /***********************
 User Database Connection

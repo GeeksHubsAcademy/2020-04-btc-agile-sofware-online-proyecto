@@ -595,6 +595,28 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
+        it('Actualizar evento no existente, expected (404)', (done) => {
+            request(app)
+                .put('/event/update?url=event1')
+                .send({
+                    "name": eventName,
+                    "invitations": invitations,
+                    "date": date,
+                    "time": time + " pm",
+                    "addres": addres + " 2B",
+                    "description": eventDescription + " modificada"
+                })
+                .set({ 'auth-token': token })
+                .expect(res => {
+                    expect(res.status).toBe(404)
+                    expect(res.text).toBe('This event does not exist')
+                })
+                .end(async (err) => {
+                    if (err) return await done(err);
+                    done();
+                })
+        })
+
     })
 
 

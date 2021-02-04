@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 
 describe('Test de endpoints, respuestas de conexión', () => {
-    
+
     const email1 = "email@gmail.com"
     const email2 = "email2@gmail.com"
     let token;
@@ -17,7 +17,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 .send({
                     "username": "username",
                     "email": email1,
-                    "password": "1234567-",
+                    "password": "1234567",
                     "name": "Manuel",
                     "lastname": "Guerra Coello"
                 })

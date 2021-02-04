@@ -7,6 +7,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     const email1 = "email@gmail.com"
     const email2 = "email2@gmail.com"
+    const user = "username"
+    const userName = "Manuel"
+    const userLastName = "Guerra Coello"
+    const Pass = "1234567-"
+    const wronPass = "1234567"
     let token;
 
     describe('Test de endpoints usuario', () => {
@@ -15,11 +20,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
             request(app)
                 .post('/user/register')
                 .send({
-                    "username": "username",
+                    "username": user,
                     "email": email1,
-                    "password": "1234567",
-                    "name": "Manuel",
-                    "lastname": "Guerra Coello"
+                    "password": wronPass,
+                    "name": userName,
+                    "lastname": userLastName
                 })
                 .set('Accept', 'application/json')
                 .expect(res => {
@@ -37,10 +42,10 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .post('/user/register')
             .send({
-                "username": "username",
+                "username": user,
                 "email": email1,
-                "name": "Manuel",
-                "lastname": "Guerra Coello"
+                "name": userName,
+                "lastname": userLastName
             })
             .set('Accept', 'application/json')
             .expect(res => {
@@ -60,9 +65,9 @@ describe('Test de endpoints, respuestas de conexión', () => {
             .post('/user/register')
             .send({
                 "email": email1,
-                "password": "1234567-",
-                "name": "Manuel",
-                "lastname": "Guerra Coello"
+                "password": Pass,
+                "name": userName,
+                "lastname": userLastName
             })
             .set('Accept', 'application/json')
             .expect(res => {
@@ -79,10 +84,10 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .post('/user/register')
             .send({
-                "username": "username",
-                "password": "1234567-",
-                "name": "Manuel",
-                "lastname": "Guerra Coello"
+                "username": user,
+                "password": Pass,
+                "name": userName,
+                "lastname": userLastName
             })
             .set('Accept', 'application/json')
             .expect(res => {
@@ -99,11 +104,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .post('/user/register')
             .send({
-                "username": "username",
+                "username": user,
                 "email": email1,
-                "password": "1234567-",
-                "name": "Manuel",
-                "lastname": "Guerra Coello"
+                "password": Pass,
+                "name": userName,
+                "lastname": userLastName
             })
             .set('Accept', 'application/json')
             .expect(res => {
@@ -121,11 +126,11 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .post('/user/register')
             .send({
-                "username": "username",
+                "username": user,
                 "email": email1,
-                "password": "1234567-",
-                "name": "Manuel",
-                "lastname": "Guerra Coello"
+                "password": Pass,
+                "name": userName,
+                "lastname": userLastName
             })
             .expect(res => {
                 expect(res.status).toBe(409)
@@ -142,8 +147,8 @@ describe('Test de endpoints, respuestas de conexión', () => {
         request(app)
             .post('/login')
             .send({
-                "email": "email@gmail.com",
-                "password": "1234567-"
+                "email": email1,
+                "password": Pass
             })
             .set('Accept', 'application/json')
             .expect(res => {

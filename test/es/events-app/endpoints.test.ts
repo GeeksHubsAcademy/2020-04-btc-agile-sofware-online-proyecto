@@ -814,6 +814,19 @@ describe('Test de endpoints, respuestas de conexión', () => {
                         done();
                     })
             })
+
+            it('Registro de invitado en evento 1, expected (200)', (done) => {
+                request(app)
+                    .post('/invited/register?url=event1')
+                    .send()
+                    .expect(res => {
+                        expect(res.status).toBe(200)
+                        expect(res.body.message).toBe('Invited Created')
+                    }).end((err) => {
+                        if (err) return done(err);
+                        done();
+                    })
+            })
     
 
         })

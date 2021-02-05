@@ -82,23 +82,37 @@ Prerrequisito: Docker
 ## Principios SOLID
 | Principio | Fichero  |
 | :-------: | :------: | 
-| Single Responsibility | src/es/events-app/Controller/UserController/UserCrud.ts  
-| Open / Close | src/es/events-app/Controller/ControllerCrud.ts  
-| Interface segregation principle | src/es/events-app/Data access/DataCrud.ts  |
+| Single Responsibility | src/es/events-app/Controller/UserController/UserCrud.ts |
+| Open / Close | src/es/events-app/Controller/ControllerCrud.ts |
+| Interface segregation principle | src/es/events-app/Data access/DataCrud.ts |
 
 ## Patrones
-| Patrón | Fichero | Método
-| :-------: | :------: |:------: |
-| Modelo | src/es/events-app/Model/EventModel.ts  |... |
-| Modelo | src/es/events-app/Model/InvitedModel.ts |... |
-| Modelo | src/es/events-app/Model/UserModel.ts  |... |
+| Patrón | Fichero | 
+| :-------: | :------: |
+| Modelos | src/es/events-app/Model |
+| Modelo | src/es/events-app/Model/EventModel.ts |
+| Modelo | src/es/events-app/Model/InvitedModel.ts |
+| Modelo | src/es/events-app/Model/UserModel.ts |
+| Vistas | src/es/events-app/Views |
+| Vista| src/es/events-app/Views/EventViews.ts |
+| Vista| src/es/events-app/Views/InvitedViews.ts |
+| Vista| src/es/events-app/Views/UserViews.ts |
+| Controladores | src/es/events-app/Controller |
+| Controlador| src/es/events-app/Controller/EventController/EventCrud.ts |
+| Controlador| src/es/events-app/Controller/InvitedController/InvitedCrud.ts |
+| Controlador| src/es/events-app/Controller/UserController/UserCrud.ts |
+
 
 ## Refactors
 | Refactor | Fichero | Método
 | :-------: | :------: |:------: |
-| ... | ...  |... |
-| ... | ...  |... |
-| ... | ...  |... |
+| Inline Method | src/es/events-app/Controller/MWS/elementsLeft.ts  | Linea 3|
+| Extract Class | src/es/events-app/Data access/DataCrud.ts  | Lineas 5 - 17 |
+| Self Encapsulate Field | src/es/events-app/config/DDBB/MongooseCon.ts  | Lineas 16 - 24... 40, 48, 52 |
+| Consolidate Conditionals | src/es/events-app/Controller/EventController/EventCrud.ts  | Linea 111 o 113 |
+| Rename Method | src/es/events-app/config/DDBB/MongooseCon.ts  |  Linea 32 - Linea 57 |
+| Pull up Method | src/es/events-app/Controller/ControllerCrud.ts  |  Lineas 14 - 17 |
+
 
 ## Notas
 ```

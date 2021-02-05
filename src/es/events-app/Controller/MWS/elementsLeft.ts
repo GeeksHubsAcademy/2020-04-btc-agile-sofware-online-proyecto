@@ -3,3 +3,4 @@ export class elementLeft {
         return firselement - secondelement; 
     }
 }
+/* Uso de refacto inline method, todo se resulve en la misma, desde la operación hasta el return */

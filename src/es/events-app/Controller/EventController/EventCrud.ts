@@ -11,10 +11,10 @@ export class EventCrud extends ControllerCrud {
         super(new DataCrud())
     }
 
-    async Create(param:any,req:any,res:any,msg:any) {
+    async Create(param: any, req: any, res: any, msg: any) {
         try {
             const userId = await TokenAction.decode(req);
-            const event = await this.CRUD.find(param,req,res,{name: req.body.name})
+            const event = await this.CRUD.find(param, req, res, { name: req.body.name })
 
             if (!userId) {
                 return res.status(401).end('You are not logged in');
@@ -23,11 +23,11 @@ export class EventCrud extends ControllerCrud {
             }
 
             const findUser = await findDatabase.find("eventsapp", "users", { _id: ObjectId(userId) })
-            const token = await TokenAction.ValToken(findUser[0]._id,req,res)
+            const token = await TokenAction.ValToken(findUser[0]._id, req, res)
 
             if (token === true) {
                 req.body.identifier = userId;
-                const eventCreate = await this.CRUD.create(param,req,res,req.body)
+                const eventCreate = await this.CRUD.create(param, req, res, req.body)
                 return await res.send({ message: msg, object: eventCreate });
             }
 
@@ -36,10 +36,10 @@ export class EventCrud extends ControllerCrud {
         }
     }
 
-    async Read(param:any,req:any,res:any,msg:any) {
+    async Read(param: any, req: any, res: any, msg: any) {
         try {
             const userId = TokenAction.decode(req);
-            const event = await this.CRUD.find(param,req,res,{ identifier: userId })
+            const event = await this.CRUD.find(param, req, res, { identifier: userId })
 
             if (!userId) {
                 return await res.status(401).end('You are not logged in');
@@ -52,17 +52,17 @@ export class EventCrud extends ControllerCrud {
 
             if ((token === true)) {
                 return await res.send({ message: msg, object: event[0] });
-            } 
+            }
 
         } catch (error) {
             return ErrorCatch.errorReturn(error, res, 'There was a problem getting the event')
         }
     }
 
-    async ReadOne(param:any,req:any,res:any,msg:any) {
+    async ReadOne(param: any, req: any, res: any, msg: any) {
         try {
             const userId = TokenAction.decode(req);
-            const event = await this.CRUD.find(param,req,res,{ url: req.query.url });
+            const event = await this.CRUD.find(param, req, res, { url: req.query.url });
 
             if (!userId) {
                 return res.status(401).end('You are not logged in');
@@ -82,9 +82,9 @@ export class EventCrud extends ControllerCrud {
         }
     }
 
-    async ReadPublic(param:any,req:any,res:any,msg:any) {
+    async ReadPublic(param: any, req: any, res: any, msg: any) {
         try {
-            const event = await this.CRUD.find(param,req,res,{ url: req.query.url })
+            const event = await this.CRUD.find(param, req, res, { url: req.query.url })
 
             if (!event[0]) {
                 return await res.status(404).end('This event does not exist');
@@ -98,11 +98,13 @@ export class EventCrud extends ControllerCrud {
     }
 
 
-    async Update(param:any,req:any,res:any,msg:any) {
+    async Update(param: any, req: any, res: any, msg: any) {
         try {
-            const event = await this.CRUD.find(param,req,res,{ url: req.query.url })
-            const findSameEvent = await this.CRUD.find(param,req,res,{ name: req.body.name })
+            const event = await this.CRUD.find(param, req, res, { url: req.query.url })
+            const findSameEvent = await this.CRUD.find(param, req, res, { name: req.body.name })
             const userId = TokenAction.decode(req);
+
+/* Consolidate Conditionals, cada condicional aplica su única lógica necesaria sin necesidad de crear logica adicional para los elementos de cada condicional */
 
             if (!userId) {
                 return res.status(401).end('You are not logged in');
@@ -118,7 +120,7 @@ export class EventCrud extends ControllerCrud {
             if (token === true) {
                 req.body.identifier = userId;
 
-                const eventUpdated = await this.CRUD.update(param,req.body,res,{_id: event[0]._id})
+                const eventUpdated = await this.CRUD.update(param, req.body, res, { _id: event[0]._id })
                 eventUpdated.save()
                 return await res.send({ message: msg, object: eventUpdated });
             }
@@ -129,10 +131,10 @@ export class EventCrud extends ControllerCrud {
     }
 
 
-    async Delete(param:any,req:any,res:any,msg:any) {
+    async Delete(param: any, req: any, res: any, msg: any) {
         try {
             const userId = TokenAction.decode(req);
-            const event = await this.CRUD.find(param,req,res,{ url: req.query.url })
+            const event = await this.CRUD.find(param, req, res, { url: req.query.url })
 
             if (!userId) {
                 return res.status(401).end('You are not logged in');
@@ -144,7 +146,7 @@ export class EventCrud extends ControllerCrud {
             const token = TokenAction.ValToken(findUser[0]._id, req, res)
 
             if (token === true) {
-                const eventDeleted = await this.CRUD.delete(param,req,res,{_id: event[0]._id})
+                const eventDeleted = await this.CRUD.delete(param, req, res, { _id: event[0]._id })
                 return await res.send({ message: msg, object: eventDeleted });
             }
 

@@ -4,6 +4,8 @@
     <img src="https://github.com/GeeksHubsAcademy/2020-geekshubs-media/blob/master/image/githubagilesoftware.jpg" >	
 </p>
 
+[![Build Status](https://travis-ci.com/thecoello/2020-04-btc-agile-sw-online-proyecto.svg?branch=develop)](https://travis-ci.com/thecoello/2020-04-btc-agile-sw-online-proyecto)
+
 ## Workflow
 ```
 Forkea el proyecto y trabaja en tu rama.

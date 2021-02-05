@@ -70,21 +70,12 @@ Prerrequisito: Docker
 1) events-app endpoints de Login, Crear, Leer y Actualizar.
 2) events-app endpoints de Login y borrado.
 ```
-| Tests unitarios |
-| :-------: |
-| npm test units.test.ts |
+<bold>para los tests de integración es encesario tener la base de datos levantada docker-compose up </bold>
 
-Tests de integración:
-| :-------: |
-| ctrl+c |
-| docker-compose up (De no tener la base de datos levantada) |
-| npm test endpoints.test.ts |
+| Correr Tests unitarios | Correr Tests de integración | Correr todos los tests
+| :-------: | :-------: | :-------: |
+| npm test units.test.ts | npm test endpoints.test.ts | npm test |
 
-Correr todos los tests
-| :-------: |
-| ctrl+c |
-| docker-compose up (De no tener la base de datos levantada) |
-| npm test |
 ```
 Nota: ctrl+c es para cerrar la conexión del terminal y usar este mismo para correr los test, 
 no debería ser necesario ya que la aplicación con npm start arranca en el puerto 3000

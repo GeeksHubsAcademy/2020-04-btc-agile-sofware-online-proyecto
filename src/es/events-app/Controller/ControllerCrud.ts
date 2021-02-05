@@ -8,7 +8,7 @@ export abstract class ControllerCrud  {
         this.CRUD = CRUD
     }
 
-    /*Pull up Method se crean metodos abstractos en esta super clase para heredar luego a las clases que extiendan de estas las cuales
+    /*Pull up Method (Unidad temática: Dealing with generalisation), se crean metodos abstractos en esta super clase para heredar luego a las clases que extiendan de estas las cuales
     son los controladores (CRUD) EventCrud, UserCrud, InvitedCrud */
 
     public abstract Create(param:any,req:any,res:any,msg:string):any

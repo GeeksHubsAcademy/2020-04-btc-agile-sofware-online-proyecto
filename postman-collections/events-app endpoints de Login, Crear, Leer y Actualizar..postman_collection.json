@@ -1,0 +1,895 @@
+{
+	"info": {
+		"_postman_id": "9a72cead-fd51-4165-8f53-678d0e40aecc",
+		"name": "events-app endpoints de Login, Crear, Leer y Actualizar.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario Endpoint | Registro de usuario 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"username\",\n    \"email\":\"email@gmail.com\",\n    \"password\":\"1234567-\",\n    \"name\":\"Manuel\",\n    \"lastname\":\"Guerra Coello\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Login de usuario 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var headerValue = pm.response.headers.get(\"auth-token\");",
+							"pm.environment.set(\"auth-token\",headerValue)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"email@gmail.com\",\n     \"password\":\"1234567-\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Actualizar de usuario 1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"username1\",\n    \"email\":\"email@gmail.com\",\n    \"password\":\"1234567-\",\n    \"name\":\"Alejandro\",\n    \"lastname\":\"Guerra Coello\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Obtener Usuario 1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user?email=email@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "email@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Crear Evento 1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"event1\",\n    \"invitations\":3,\n    \"date\":\"12/02/2021\",\n    \"time\":\"7:00\",\n    \"addres\":\"c/ nombre de calle\",\n    \"description\":\"esto es una descripción\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Crear Evento 2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"event2\",\n    \"invitations\":3,\n    \"date\":\"11/01/2021\",\n    \"time\":\"5:00\",\n    \"addres\":\"c/ nombre de calle\",\n    \"description\":\"esto es una descripción\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Actualizar Evento 1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "{{auth-token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"event1\",\n    \"invitations\":3,\n    \"date\":\"12/02/2021\",\n    \"time\":\"9:00\",\n    \"addres\":\"c/ nombre de calle\",\n    \"description\":\"esto es una descripción modificada\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/update?url=event1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"update"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Obtener Eventos de usuario Loggeado",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/events",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Obtener Evento (1)  único de usuario Loggeado",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event?url=event1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Obtener Evento (1) público",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/public?url=event1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"public"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Registro de usuario 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"username\",\n    \"email\":\"email2@gmail.com\",\n    \"password\":\"1234567-\",\n    \"name\":\"Patricia\",\n    \"lastname\":\"Gonzalez Martin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Login de usuario 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var headerValue = pm.response.headers.get(\"auth-token\");",
+							"pm.environment.set(\"auth-token\",headerValue)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"email2@gmail.com\",\n     \"password\":\"1234567-\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Actualizar de usuario 2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"username2\",\n    \"email\":\"email2@gmail.com\",\n    \"password\":\"1234567-\",\n    \"name\":\"Patricia Alejandra\",\n    \"lastname\":\"Gonzalez Martin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Obtener Usuario 2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user?email=email2@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "email2@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Crear Evento 3",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"event3\",\n    \"invitations\":3,\n    \"date\":\"11/01/2021\",\n    \"time\":\"5:00\",\n    \"addres\":\"c/ nombre de calle\",\n    \"description\":\"esto es una descripción\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Actualizar Evento 3",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"event3\",\n    \"invitations\":3,\n    \"date\":\"11/01/2021\",\n    \"time\":\"6:00\",\n    \"addres\":\"c/ nombre de calle\",\n    \"description\":\"esto es una descripción modificada evento 3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/update?url=event3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"update"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Obtener Eventos de usuario Loggeado 2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/events",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Obtener Evento (3)  único de usuario Loggeado",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event?url=event3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Obtener Evento (2) público",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/public?url=event3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"public"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invitado Endpoint | Registro de Invitado 1 en  Evento 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Manuel\",\n    \"lastname\":\"Guerra Coello\",\n    \"email\":\"invited@email.com\",\n    \"phone\":\"123456789\",\n    \"birthdate\":\"29/03/1994\",\n    \"nacionality\":\"Española\",\n    \"addres\":\"calle, nombre de calle\",\n    \"country\":\"España\",\n    \"city\":\"Madrid\",\n    \"zipcode\":\"28000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/invited/register?url=event1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invited",
+						"register"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invitado Endpoint | Actuallización de Invitado 1 en  Evento 1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Alejandro\",\n    \"lastname\":\"Guerra Coello\",\n    \"email\":\"invited@email.com\",\n    \"phone\":\"987654321\",\n    \"birthdate\":\"29/03/1994\",\n    \"nacionality\":\"Española\",\n    \"addres\":\"calle, nombre de calle\",\n    \"country\":\"España\",\n    \"city\":\"Madrid\",\n    \"zipcode\":\"28000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/invited/update?email=invited@email.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invited",
+						"update"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "invited@email.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invitado Endpoint | Obtener Invitación a  Evento 1 mediante email",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/invited/invitation?email=invited@email.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invited",
+						"invitation"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "invited@email.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invitado Endpoint | Registro de Invitado 1 en  Evento 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Manuel\",\n    \"lastname\":\"Guerra Coello\",\n    \"email\":\"invited@email.com\",\n    \"phone\":\"123456789\",\n    \"birthdate\":\"29/03/1994\",\n    \"nacionality\":\"Española\",\n    \"addres\":\"calle, nombre de calle\",\n    \"country\":\"España\",\n    \"city\":\"Madrid\",\n    \"zipcode\":\"28000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/invited/register?url=event2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invited",
+						"register"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invitado Endpoint | Obtener Invitación a  Evento 1 y Evento 2 mediante email Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/invited/invitation?email=invited@email.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invited",
+						"invitation"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "invited@email.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

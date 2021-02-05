@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "cb1f58ce-fe87-4f56-aa3a-d6292a4b1866",
+		"name": "events-app endpoints de Login y borrado.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Invitado Endpoint | Eliminar Invitación a  Evento 1 mediante email",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/invited/delete?email=invited@email.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invited",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "invited@email.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Login de usuario 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var headerValue = pm.response.headers.get(\"auth-token\");",
+							"pm.environment.set(\"auth-token\",headerValue)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"email@gmail.com\",\n     \"password\":\"1234567-\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Eliminar Evento 1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/delete?url=event1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Eliminar Evento 2",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/delete?url=event2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Eliminar Usuario 1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/delete?email=email@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "email@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Login de usuario 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var headerValue = pm.response.headers.get(\"auth-token\");",
+							"pm.environment.set(\"auth-token\",headerValue)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"email2@gmail.com\",\n     \"password\":\"1234567-\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Endpoint | Eliminar Evento 3",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/event/delete?url=event3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"event",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "event3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usuario Endpoint | Eliminar Usuario 2",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth-token",
+						"type": "text",
+						"value": "{{auth-token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/user/delete?email=email2@gmail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "email2@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -104,14 +104,14 @@ Prerrequisito: Docker
 
 
 ## Refactors
-| Refactor | Fichero | Método
-| :-------: | :------: |:------: |
-| Inline Method | src/es/events-app/Controller/MWS/elementsLeft.ts  | Linea 3|
-| Extract Class | src/es/events-app/Data access/DataCrud.ts  | Lineas 5 - 17 |
-| Self Encapsulate Field | src/es/events-app/config/DDBB/MongooseCon.ts  | Lineas 16 - 24... 40, 48, 52 |
-| Consolidate Conditionals | src/es/events-app/Controller/EventController/EventCrud.ts  | Linea 111 o 113 |
-| Rename Method | src/es/events-app/config/DDBB/MongooseCon.ts  |  Linea 32 - Linea 57 |
-| Pull up Method | src/es/events-app/Controller/ControllerCrud.ts  |  Lineas 14 - 17 |
+Unidad temática | Refactor | Fichero | Método 
+| :-------: | :-------: | :------: |:------: |
+| Composing methods | Inline Method | src/es/events-app/Controller/MWS/elementsLeft.ts  | Linea 3|
+| Moving features between objects | Extract Class | src/es/events-app/Data access/DataCrud.ts  | Lineas 5 - 17 |
+| Organizing Data | Self Encapsulate Field | src/es/events-app/config/DDBB/MongooseCon.ts  | Lineas 16 - 24... 40, 48, 52 |
+| Simplifying Conditional Expressions| Consolidate Conditionals | src/es/events-app/Controller/EventController/EventCrud.ts  | Linea 111 o 113 |
+| Making method calls simpler | Rename Method | src/es/events-app/config/DDBB/MongooseCon.ts  |  Linea 32 - Linea 57 |
+| Dealing with generalisation | Pull up Method | src/es/events-app/Controller/ControllerCrud.ts  |  Lineas 14 - 17 |
 
 
 ## Notas

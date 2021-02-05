@@ -3,4 +3,5 @@ export class elementLeft {
         return firselement - secondelement; 
     }
 }
-/* Uso de refacto inline method, todo se resulve en la misma, desde la operación hasta el return */
+/* Refactor inline method (Unidad temática: Composing methods),
+ todo se resulve en la misma, desde la operación hasta el return */

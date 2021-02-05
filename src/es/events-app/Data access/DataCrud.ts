@@ -20,4 +20,5 @@ export class DataCrud implements CRUDI{
  
 } 
 
-/* Refactor Extract Class, esta clase se encarga de gestionar la conexión con base de datos haciendo el CRUD así la clase del controlador no tiene que hacerla */
+/* Refactor Extract Class (Unidad temática: Moving features between objects), 
+esta clase se encarga de gestionar la conexión con base de datos haciendo el CRUD así la clase del controlador no tiene que hacerla */

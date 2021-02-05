@@ -56,7 +56,6 @@ Alumno: Manuel Guerra Coello
 | @types/jest | 26.0.18|
 | supertest | 6.0.1 |
 
-
 ## Línea de comandos
 ```
 Prerrequisito: Docker
@@ -65,18 +64,18 @@ Prerrequisito: Docker
 | :-------: | :-------: | :-------: |
 | npm install | docker-compose up | npm start |
 
-**correr las colecciones de postman adjunta al repositorio)**
+**correr las colecciones de postman adjunta al repositorio**
 
 ```
 1) events-app endpoints de Login, Crear, Leer y Actualizar.
 2) events-app endpoints de Login y borrado.
 ```
+
 **Para correr los tests de integración es encesario tener la base de datos levantada: docker-compose up**
 
 | Correr Tests unitarios | Correr Tests de integración | Correr todos los tests
 | :-------: | :-------: | :-------: |
 | npm test units.test.ts | npm test endpoints.test.ts | npm test |
-
 
 ## Principios SOLID
 | Principio | Fichero  |

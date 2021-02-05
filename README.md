@@ -60,7 +60,7 @@ Alumno: Manuel Guerra Coello
 ## Línea de comandos
 ```
 Prerrequisito: Docker
-
+```
 | Instalar dependencias |
 | :-------: |
 | npm install |
@@ -72,11 +72,11 @@ Prerrequisito: Docker
 | Arrancar app |
 | :-------: |
 | npm start |
-
+```
 (correr las colecciones de postman adjunta al repositorio)
 1) events-app endpoints de Login, Crear, Leer y Actualizar.
 2) events-app endpoints de Login y borrado.
-
+```
 | Tests unitarios |
 | :-------: |
 | npm test units.test.ts |
@@ -92,7 +92,7 @@ Correr todos los tests
 | ctrl+c |
 | docker-compose up (De no tener la base de datos levantada) |
 | npm test |
-
+```
 Nota: ctrl+c es para cerrar la conexión del terminal y usar este mismo para correr los test, 
 no debería ser necesario ya que la aplicación con npm start arranca en el puerto 3000
 y los tests de integración los levanta (supertest) con sus propios puertos. Por otro lado

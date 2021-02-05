@@ -64,7 +64,7 @@ Prerrequisito: Docker
 | :-------: | :-------: | :-------: |
 | npm install | docker-compose up | npm start |
 
-**correr las colecciones de postman adjunta al repositorio**
+**Correr las colecciones de postman adjunta al repositorio**
 
 ```
 1) events-app endpoints de Login, Crear, Leer y Actualizar.

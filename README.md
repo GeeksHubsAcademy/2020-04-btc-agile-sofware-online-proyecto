@@ -70,7 +70,7 @@ Prerrequisito: Docker
 1) events-app endpoints de Login, Crear, Leer y Actualizar.
 2) events-app endpoints de Login y borrado.
 ```
-<p><bold>Para correr los tests de integración es encesario tener la base de datos levantada docker-compose up </bold></p>
+**Para correr los tests de integración es encesario tener la base de datos levantada docker-compose up**
 
 | Correr Tests unitarios | Correr Tests de integración | Correr todos los tests
 | :-------: | :-------: | :-------: |

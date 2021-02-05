@@ -30,7 +30,7 @@ export class MongooseCon implements mongooseI {
     }
     
   async  MongoConnect() {
-      /*Rename Method: cada metodo inicia con "Mongo" pero tienen su propio naming, 
+      /*Rename Method (Unidad temática: Making method calls simpler), cada metodo inicia con "Mongo" pero tienen su propio naming, 
       MongoConnect() crea la conexión a base de datos
       MongoClose() cierra la conexión a base de datos en los tests  */
 

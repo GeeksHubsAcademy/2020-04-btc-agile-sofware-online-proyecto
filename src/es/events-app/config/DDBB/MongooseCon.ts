@@ -11,7 +11,7 @@ export class MongooseCon implements mongooseI {
         this._msg = msg;
     }
 
-    /*Self Encapsulate Field con el uso de geters*/
+    /*Self Encapsulate Field (Unidad temática: Organizing Data) con el uso de geters*/
 
     getMsg() : String {
         return this._msg

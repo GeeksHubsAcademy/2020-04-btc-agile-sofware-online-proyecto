@@ -62,7 +62,7 @@ Alumno: Manuel Guerra Coello
 Prerrequisito: Docker
 ```
 | Instalar dependencias | MongoDB Docker | Arrancar app |
-| :-------: || :-------: | :-------: |
+| :-------: | :-------: | :-------: |
 | npm install | docker-compose up | npm start |
 
 ```

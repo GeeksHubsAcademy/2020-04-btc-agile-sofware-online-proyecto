@@ -104,7 +104,7 @@ export class EventCrud extends ControllerCrud {
             const findSameEvent = await this.CRUD.find(param, req, res, { name: req.body.name })
             const userId = TokenAction.decode(req);
 
-/* Consolidate Conditionals, cada condicional aplica su única lógica necesaria sin necesidad de crear logica adicional para los elementos de cada condicional */
+/* Consolidate Conditionals (undiad temática: Simplifying Conditional Expressions), cada condicional aplica su única lógica necesaria sin necesidad de crear logica adicional para los elementos de cada condicional */
 
             if (!userId) {
                 return res.status(401).end('You are not logged in');

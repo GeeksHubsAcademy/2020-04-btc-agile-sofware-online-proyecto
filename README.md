@@ -61,12 +61,13 @@ Alumno: Manuel Guerra Coello
 ```
 Prerrequisito: Docker
 ```
-| Instalar dependencias | MongoDB Docker | Arrancar app |
+| 1) Instalar dependencias | 2) MongoDB Docker | 3) Arrancar app |
 | :-------: | :-------: | :-------: |
 | npm install | docker-compose up | npm start |
 
+**correr las colecciones de postman adjunta al repositorio)**
+
 ```
-(correr las colecciones de postman adjunta al repositorio)
 1) events-app endpoints de Login, Crear, Leer y Actualizar.
 2) events-app endpoints de Login y borrado.
 ```

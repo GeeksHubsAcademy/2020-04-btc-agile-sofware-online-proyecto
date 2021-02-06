@@ -4,8 +4,8 @@ import { MongooseCon } from '../../../src/es/events-app/config/DDBB/MongooseCon'
 
 describe('Test de endpoints, respuestas de conexión', () => {
 
-    const email1 = "email@gmail.com"
-    const email2 = "email2@gmail.com"
+    const email1 = "email@EMAIL.com"
+    const email2 = "email2@EMAIL.com"
     const user = "username"
     const userName = "Manuel"
     const userLastName = "Guerra Coello"
@@ -327,8 +327,8 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
     describe('Test de endpoints evento', () => {
 
-        const eventName = "event1";
-        const eventName2 = "event2";
+        const eventName = "EVENT 1";
+        const eventName2 = "EVENT 2";
         const invitations = 3;
         const date = "12/02/2021"
         const time = "7:00";
@@ -531,7 +531,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Actualizar evento 1 sin token, expected (401)', (done) => {
             request(app)
-                .put('/event/update?url=event1')
+                .put('/event/update?url=EVENT1')
                 .send({
                     "name": eventName,
                     "invitations": invitations,
@@ -553,7 +553,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Actualizar evento 1, expected (200)', (done) => {
             request(app)
-                .put('/event/update?url=event1')
+                .put('/event/update?url=EVENT1')
                 .send({
                     "name": eventName,
                     "invitations": invitations,
@@ -575,7 +575,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Actualizar evento existente con nombre de otro evento existente, expected (409)', (done) => {
             request(app)
-                .put('/event/update?url=event2')
+                .put('/event/update?url=EVENT2')
                 .send({
                     "name": eventName,
                     "invitations": invitations,
@@ -648,7 +648,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Obtener evento 1 (único) de usuario Logueado, expected (200)', (done) => {
             request(app)
-                .get('/event?url=event1')
+                .get('/event?url=EVENT1')
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)
@@ -662,7 +662,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Obtener evento 1 (único) de usuario no Logueado, expected (401)', (done) => {
             request(app)
-                .get('/event?url=event1')
+                .get('/event?url=EVENT1')
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
@@ -676,7 +676,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Obtener evento 1 (público), expected (200)', (done) => {
             request(app)
-                .get('/event/public?url=event1')
+                .get('/event/public?url=EVENT1')
                 .expect(res => {
                     expect(res.status).toBe(200)
                     expect(res.body.message).toBe('Event Founded')
@@ -687,9 +687,9 @@ describe('Test de endpoints, respuestas de conexión', () => {
                 })
         })
 
-        it('Obtener evento 3 no existente (público), expected (404)', (done) => {
+        it('Obtener evento 10 no existente (público), expected (404)', (done) => {
             request(app)
-                .get('/event/public?url=event3')
+                .get('/event/public?url=event10')
                 .expect(res => {
                     expect(res.status).toBe(404)
                     expect(res.text).toBe('This event does not exist')
@@ -705,10 +705,10 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             const name = "manuel";
             const lastName = "Guerra Coello";
-            const email = "invited@email.com"
-            const email2 = "invited2@email.com"
-            const email3 = "invited3@email.com"
-            const email4 = "invited4@email.com"
+            const email = "invited@EMAIL.com"
+            const email2 = "invited2@EMAIL.com"
+            const email3 = "invited3@EMAIL.com"
+            const email4 = "invited4@EMAIL.com"
             const phone = "123456789";
             const birth = "29/03/1994";
             const nacionality = "Española"
@@ -719,7 +719,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado sin nombre(500)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "lastname": lastName,
                         "email": email,
@@ -744,7 +744,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado sin apellido (500)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "name": name,
                         "email": email,
@@ -770,7 +770,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado sin email (500)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -795,7 +795,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado sin número de teléfono (500)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -820,7 +820,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado en evento 1, expected (200)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -844,7 +844,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado registrado anteriormente en evento 1 , expected (409)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -869,7 +869,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado 2 en evento 1, expected (200)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -893,7 +893,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado 3 en evento 1, expected (200)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -917,7 +917,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado 4 en evento 1, no hay invitaciones disponibles expected (409)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event1')
+                    .post('/invited/register?url=EVENT1')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -941,7 +941,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Registro de invitado en evento 2, expected (200)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event2')
+                    .post('/invited/register?url=EVENT2')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -964,9 +964,9 @@ describe('Test de endpoints, respuestas de conexión', () => {
                     })
             })
 
-            it('Registro de invitado evento 3 (no existente), expected (404)', (done) => {
+            it('Registro de invitado evento 10(no existente), expected (404)', (done) => {
                 request(app)
-                    .post('/invited/register?url=event3')
+                    .post('/invited/register?url=event10')
                     .send({
                         "name": name,
                         "lastname": lastName,
@@ -1041,7 +1041,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
             it('Obtener invitación de invitado registrado, expected (200)', (done) => {
                 request(app)
-                    .get('/invited/invitation?email=invited@email.com')
+                    .get('/invited/invitation?email=invited@EMAIL.com')
                     .expect(res => {
                         expect(res.status).toBe(200)
                         expect(res.body.message).toBe('Invited Founded')
@@ -1069,10 +1069,10 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         describe('Test endpoints eliminar invitaciónes', () => {
 
-            const email = "invited@email.com"
-            const email2 = "invited2@email.com"
-            const email3 = "invited3@email.com"
-            const email4 = "invited4@email.com"
+            const email = "invited@EMAIL.com"
+            const email2 = "invited2@EMAIL.com"
+            const email3 = "invited3@EMAIL.com"
+            const email4 = "invited4@EMAIL.com"
 
             it('Eliminar invitación no existente, expected (404)', (done) => {
                 request(app)
@@ -1133,7 +1133,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Eliminar evento 1 sin token, expected (401)', (done) => {
             request(app)
-                .delete('/event/delete?url=event1')
+                .delete('/event/delete?url=EVENT1')
                 .unset('auth-token')
                 .expect(res => {
                     expect(res.status).toBe(401)
@@ -1161,7 +1161,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Eliminar evento 2, expected (200)', (done) => {
             request(app)
-                .delete('/event/delete?url=event2')
+                .delete('/event/delete?url=EVENT2')
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)
@@ -1175,7 +1175,7 @@ describe('Test de endpoints, respuestas de conexión', () => {
 
         it('Eliminar evento 1, expected (200)', (done) => {
             request(app)
-                .delete('/event/delete?url=event1')
+                .delete('/event/delete?url=EVENT1')
                 .set({ 'auth-token': token })
                 .expect(res => {
                     expect(res.status).toBe(200)

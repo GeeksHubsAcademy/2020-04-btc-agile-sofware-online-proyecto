@@ -28,7 +28,8 @@ Funcionamiento (proceso):
 ya que es necesario incluir el número de invitaciones al momento de crear el evento).
 
 Alumno: Manuel Guerra Coello
-Vídeo explicativo: https://drive.google.com/file/d/1rLOZ-IyJ-JHNcpLYatPjrKlueRY4ZO6J/view?usp=sharing
+Vídeo explicativo: 
+https://drive.google.com/file/d/1rLOZ-IyJ-JHNcpLYatPjrKlueRY4ZO6J/view?usp=sharing
 ```
 
 ## Instalación

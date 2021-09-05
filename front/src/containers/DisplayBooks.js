@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BookCard from "../components/bookCard/BookCard";
+import BookForm from "../components/bookForm/BookForm";
 import getAllBooks from '../services/fetchBooks';
 
 import "./DisplayBooks.css";
@@ -39,6 +40,7 @@ export const DisplayBooks = () => {
                 author={book.author}
                 year={book.year}
             ></BookCard>)}
+            <BookForm></BookForm>
         </div>
     )
 }

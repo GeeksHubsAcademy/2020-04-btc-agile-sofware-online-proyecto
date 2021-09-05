@@ -28,6 +28,7 @@ jobs:
           mongodb-version: ${{ matrix.mongodb-version }}
 
       - run: cd ./back && npm install
-
+      - run: cd ./back && npm run clean
+      - run: cd ./back && npm run build
       - run: cd ./back && npm run seed:test
       - run: cd ./back && npm run test

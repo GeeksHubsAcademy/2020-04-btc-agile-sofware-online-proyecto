@@ -18,7 +18,8 @@ if (process.env.NODE_ENV === "development") {
 
 console.log(urldb, portdb, namedb);
 
-connectdb(urldb, portdb, namedb);
+connectdb("localhost", "27017", "library_test");
+// connectdb(urldb, portdb, namedb);
 
 mongoose.connection.dropCollection("books", () => {
   console.log("*** books collection deleted ***");

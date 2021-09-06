@@ -5,7 +5,6 @@ import getAllBooks from '../services/fetchBooks';
 
 import "./DisplayBooks.css";
 
-
 export const DisplayBooks = () => {
 
     const [books, setBooks] = useState([]);
@@ -13,15 +12,11 @@ export const DisplayBooks = () => {
     useEffect(() => {
         console.log("useEffect");
         getBooks();
-        // fetch("http://localhost:3001/book", {
-        //     method: "GET",
-        //     headers: { "Content-Type": "application/json" }
-        // }).then((response) => response.json())
-        //     .then((json) => { setBooks(json) })
     }, []);
 
 
     const getBooks = async () => {
+        console.log("en get books");
         try {
             const res = await getAllBooks();
             const json = await res.json();
@@ -34,7 +29,11 @@ export const DisplayBooks = () => {
 
     return (
         <div>
+
+            <BookForm refresh={getBooks}></BookForm>
+
             <h2>Libros disponibles</h2>
+
             <div className="display-books-box">
                 {books.map(book => <BookCard
                     title={book.title}

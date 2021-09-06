@@ -1,0 +1,15 @@
+.form-box {
+  background-color: green;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+}
+
+.book-input {
+  width: 16rem;
+  height: 2rem;
+}

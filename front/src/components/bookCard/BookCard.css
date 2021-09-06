@@ -1,11 +1,9 @@
 .book-box {
   max-width: 50rem;
-  margin: auto;
   margin-bottom: 1rem;
-  background-color: rgb(165, 165, 165);
+  background-color: rgba(96, 113, 212, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 0.2rem solid black;
   border-radius: 0.4rem;
 }

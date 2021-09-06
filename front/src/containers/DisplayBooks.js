@@ -34,13 +34,15 @@ export const DisplayBooks = () => {
 
     return (
         <div>
-            <h1>Libros disponibles</h1>
-            {books.map(book => <BookCard
-                title={book.title}
-                author={book.author}
-                year={book.year}
-            ></BookCard>)}
-            <BookForm></BookForm>
+            <h2>Libros disponibles</h2>
+            <div className="display-books-box">
+                {books.map(book => <BookCard
+                    title={book.title}
+                    author={book.author}
+                    year={book.year}
+                ></BookCard>)}
+            </div>
+
         </div>
     )
 }

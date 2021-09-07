@@ -38,7 +38,6 @@ export const BookForm = (props) => {
                 <input className="book-input" type="text" placeholder="Título del libro" required onInput={e => getTitleChange(e)}></input>
                 <input className="book-input" type="text" placeholder="Autor" required onInput={e => getAuthorChange(e)}></input>
                 <input className="book-input" type="number" placeholder="Año" required onInput={e => getYearChange(e)}></input>
-                {/* <input className="book-input" type="text" placeholder="Url" onInput={e => getUrlChange(e)}></input> */}
                 <button className="add-button" type="submit">Agregar</button>
             </form>
         </div>

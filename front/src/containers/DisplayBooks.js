@@ -10,13 +10,11 @@ export const DisplayBooks = () => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        console.log("useEffect");
         getBooks();
     }, []);
 
 
     const getBooks = async () => {
-        console.log("en get books");
         try {
             const res = await getAllBooks();
             const json = await res.json();
@@ -39,6 +37,8 @@ export const DisplayBooks = () => {
                     title={book.title}
                     author={book.author}
                     year={book.year}
+                    id={book._id}
+                    refresh={getBooks}
                 ></BookCard>)}
             </div>
 

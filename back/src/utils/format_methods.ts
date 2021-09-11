@@ -1,6 +1,4 @@
-import { LeanDocument } from "mongoose";
 import { IBook } from "../models/book.model";
-import { FormattedBook } from "../types";
 
 export function formatBook(book: IBook) {
   const fmt = book.toJSON();

@@ -13,12 +13,6 @@ const urldb: string = process.env.DB_URL;
 const portdb: string = process.env.DB_PORT;
 let namedb: string;
 
-// if (process.env.NODE_ENV === "development") {
-//   namedb = process.env.DB_NAME;
-// } else {
-//   namedb = process.env.DB_NAME_TEST;
-// }
-
 if (process.env.NODE_ENV === "development") {
   namedb = process.env.DB_NAME;
   connectdb(urldb, portdb, namedb);

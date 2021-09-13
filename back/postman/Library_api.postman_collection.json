@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "e843fa08-3e02-45e6-b8d8-a76aad79b7bc",
+		"name": "Library_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get a book",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"title\": \"Las guerras yugoslavas\",\n      \"author\": \"Eladi Romero García\",\n      \"year\": 2021,\n      \"cover_path\": \"cover_path\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/book/{{id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"book",
+						"{{id}}"
+					]
+				},
+				"description": "Get a specific book based on id"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"title\": \"Un libro de prueba\",\n      \"author\": \"Eladi Romero García\",\n      \"year\": 2021,\n      \"cover_path\": \"cover_path\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/book",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"book"
+					]
+				},
+				"description": "Add a book to library"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a book",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"title\": \"Un libro de prueba modificado\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/book/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"book",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "613343e0cb5b41459f63f586"
+						}
+					]
+				},
+				"description": "Update a book that already exists on database"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/book/:id",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"book",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "613343e0cb5b41459f63f586"
+						}
+					]
+				},
+				"description": "Remove a book from database"
+			},
+			"response": []
+		}
+	]
+}

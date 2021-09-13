@@ -30,7 +30,7 @@ export const DisplayBooks = () => {
 
             <BookForm refresh={getBooks}></BookForm>
 
-            <h2>Libros disponibles</h2>
+            <h2 className="list-title">Libros disponibles</h2>
 
             <div className="display-books-box">
                 {books.map(book => <BookCard

@@ -8,18 +8,14 @@ dotenv.config();
 
 const urldb: string = process.env.DB_URL;
 const portdb: string = process.env.DB_PORT;
-let namedb: string;
+let namedb: string = process.env.DB_NAME;
 
 if (process.env.NODE_ENV === "development") {
-  namedb = process.env.DB_NAME;
+  connectdb(urldb, portdb, namedb);
 } else {
-  namedb = process.env.DB_NAME_TEST;
+  // We hardcode this parameters in order to avoid CI errors  (.env is not available)
+  connectdb("localhost", "27017", "library_test");
 }
-
-console.log(urldb, portdb, namedb);
-
-connectdb("localhost", "27017", "library_test");
-// connectdb(urldb, portdb, namedb);
 
 mongoose.connection.dropCollection("books", () => {
   console.log("*** books collection deleted ***");

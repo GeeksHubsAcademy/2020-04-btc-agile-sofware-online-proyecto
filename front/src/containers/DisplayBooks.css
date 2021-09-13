@@ -25,3 +25,8 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.list-title {
+  color: white;
+  text-align: center;
+}

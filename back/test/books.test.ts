@@ -4,8 +4,6 @@ import app from "../src/app";
 import Book, { IBook } from "../src/models/book.model";
 import connectdb from "../config/configdb";
 
-// comment to test CI
-
 let books: IBook[];
 
 const getBooks = async () => {

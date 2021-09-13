@@ -33,7 +33,7 @@ export const BookForm = (props) => {
 
     return (
         <div className="form-box">
-            <h2>Formulario nuevo libro</h2>
+            <h2 className="title-form">Formulario nuevo libro</h2>
             <form className="form" onSubmit={addBookHandler}>
                 <input id="title" className="book-input" type="text" placeholder="Título del libro" required onInput={e => getTitleChange(e)}></input>
                 <input id="author" className="book-input" type="text" placeholder="Autor" required onInput={e => getAuthorChange(e)}></input>

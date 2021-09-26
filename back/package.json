@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./dist/app.js",
     "start:dev": "NODE_ENV=development ts-node-dev ./src/app.ts",
+    "start:fronttest": "NODE_ENV=fronttest ts-node-dev ./src/app.ts",
     "seed": "NODE_ENV=development node ./dist/src/seeds/movies.seed.js",
     "build": "tsc",
     "clean": "rimraf dist",

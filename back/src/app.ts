@@ -23,6 +23,11 @@ if (process.env.NODE_ENV === "seed") {
   connectdb(urldb, portdb, namedb);
 }
 
+if (process.env.NODE_ENV === "fronttest") {
+  namedb = process.env.DB_NAME_TEST;
+  connectdb(urldb, portdb, namedb);
+}
+
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());

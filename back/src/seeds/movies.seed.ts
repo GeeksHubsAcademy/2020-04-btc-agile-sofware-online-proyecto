@@ -1,5 +1,5 @@
-import connectdb from "../../config/configdb";
-import Book, { IBook } from "../models/book.model";
+import connectdb from "../../config/configdb.js";
+import Book, { IBook } from "../models/book.model.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import fs from "fs";

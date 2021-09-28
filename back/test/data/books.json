@@ -1,0 +1,26 @@
+{
+  "book_01": {
+    "title": "Las uvas de la ira",
+    "author": "John Steinbeck",
+    "year": 1956,
+    "cover_path": "https:randomurl.com"
+  },
+  "book_02": {
+    "title": "Armas, gérmenes y acero",
+    "author": "Jared Diamond",
+    "year": 1998,
+    "cover_path": "https:randomurl.com"
+  },
+  "book_03": {
+    "title": "El pulgar del panda",
+    "author": "Stephen Jay Gould",
+    "year": 1976,
+    "cover_path": "https:randomurl.com"
+  },
+  "book_04": {
+    "title": "El siglo de la revolución",
+    "author": "Josep Fontana",
+    "year": 2017,
+    "cover_path": "https:randomurl.com"
+  }
+}
